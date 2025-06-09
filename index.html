@@ -2,71 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ritika | Data Analyst</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ritika Khurana | Data Analyst Portfolio</title>
   <style>
-    /* Flex layout for header */
+    /* Reset some default */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
     header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 5px;
+      color: #007acc;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #007acc;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #007acc;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      list-style-type: none;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       flex-wrap: wrap;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 20px;
-      margin-bottom: 30px;
+      gap: 10px;
     }
-    .intro-text {
-      max-width: 60%;
+
+    ul li {
+      background-color: #e1f0ff;
+      color: #007acc;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: 600;
     }
-    .intro-text h1 {
-      margin: 0 0 10px 0;
-    }
-    .intro-text p {
-      margin: 4px 0;
-      font-weight: bold;
-      color: #333;
-    }
-    .profile-pic {
-      max-width: 180px;
+
+    .projects article {
+      background-color: white;
+      padding: 15px 20px;
       border-radius: 8px;
-      margin-left: 20px;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+      margin-bottom: 20px;
     }
-    /* Responsive for small screens */
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .intro-text {
-        max-width: 100%;
-      }
-      .profile-pic {
-        margin-left: 0;
-        margin-top: 20px;
-        max-width: 100%;
-        height: auto;
+
+    .projects article h3 {
+      margin-bottom: 8px;
+      color: #004a99;
+    }
+
+    .projects article p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 50px;
+    }
+
+    a {
+      color: #007acc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      ul {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="intro-text">
-      <h1>Hi, I'm Ritika 👋</h1>
-      <p>CBDA CERTIFIED | POSTGRADUATE - DATA AND ANALYTICS | B.TECH IN ELECTRONICS AND COMM</p>
-      <p>Business Data Analyst @ Alberta Motor Association</p>
-      <p>Data Analyst | Storyteller | Problem Solver</p>
-    </div>
-    <img src="ritika.jpg" alt="Ritika Khurana" class="profile-pic" />
+    <h1>Ritika Khurana</h1>
+    <p>Data Analyst | Turning Data into Actionable Insights</p>
   </header>
 
-  <section id="about">
+  <section class="about">
     <h2>About Me</h2>
-    <p>I’m a certified Business Data Analyst with 4+ years of experience in SQL, Power BI, and Snowflake...</p>
+    <p>
+      Passionate data analyst with 4+ years of experience working with SQL, Power BI, Snowflake, and Excel. Skilled in transforming complex data into clear and actionable business insights to help organizations make smarter decisions.
+    </p>
   </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
+  <section class="skills">
+    <h2>Skills</h2>
     <ul>
-      <li><strong>Customer Churn Analysis<
+      <li>SQL</li>
+      <li>Power BI</li>
+      <li>Snowflake</li>
+      <li>Excel</li>
+      <li>Data Visualization</li>
+      <li>Data Cleaning</li>
+      <li>Python (Basic)</li>
+      <li>Business Analysis</li>
+    </ul>
+  </section>
+
+  <section class="projects">
+    <h2>Projects</h2>
+
+    <article>
+      <h3>Customer Churn Prediction</h3>
+      <p>
+        Built a predictive model to identify at-risk customers using historical transaction data, improving retention strategies for a subscription-based company.
+      </p>
+    </article>
+
+    <article>
+      <h3>Sales Dashboard</h3>
+      <p>
+        Developed interactive Power BI dashboards for sales performance tracking across multiple business units, enabling real-time decision-making.
+      </p>
+    </article>
+
+    <article>
+      <h3>Data Migration Validation</h3>
+      <p>
+        Validated data integrity between legacy and new data warehouse systems ensuring accurate reporting during system upgrades.
+      </p>
+    </article>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:ritika.k@example.com">ritika.k@example.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/ritika-khurana" target="_blank" rel="noopener">linkedin.com/in/ritika-khurana</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Ritika Khurana
+  </footer>
+</body>
+</html>
