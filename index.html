@@ -1,61 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Data Analyst Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        .header {
-            background-color: #2e3b4e;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .profile-pic {
-            display: block;
-            margin: 20px auto;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-        .description {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            font-size: 18px;
-            line-height: 1.6;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ritika | Data Analyst Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #1f2937;
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      margin-top: 20px;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #1f2937;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skills-list span {
+      background-color: #e0e7ff;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .project-card {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #f9fafb;
+      transition: transform 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: scale(1.02);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      background-color: #f3f4f6;
+      color: #666;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Ritika Khurana</h1>
-        <h2>Business Data Analyst</h2>
-    </div>
 
-    <img src="image/photo.jpg" alt="Profile Picture" class="profile-pic">
+  <header>
+    <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
+    <h1>Ritika Khurana</h1>
+    <p>Business Data Analyst | Turning Data Into Actionable Insights</p>
+  </header>
 
-    <div class="description">
-        <p>
-            Business Data Analyst with over 4 years of experience helping businesses make data-driven decisions. 
-            I work with organizations that already understand their core operations. My job is not to educate them 
-            on what they do or how they do it — it's to equip them with factual, data-centric insights that 
-            inform strategic decisions. I leverage SQL, Snowflake, Power BI, and Excel to turn complex data into 
-            clear, actionable intelligence. My focus is on operational clarity, measurable impact, and driving 
-            business performance through clean, reliable data storytelling.
-        </p>
+  <div class="section">
+    <h2>About Me</h2>
+    <p>
+      I’m a Business Data Analyst with 4+ years of experience in data transformation, reporting, and operational analytics.
+      I work at the intersection of data and decision-making, helping business teams make informed choices using clean,
+      trusted data. I specialize in SQL, Snowflake, Power BI, Excel, and storytelling with data.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <span>SQL</span>
+      <span>Snowflake</span>
+      <span>Power BI</span>
+      <span>Excel</span>
+      <span>Python (basic)</span>
+      <span>Data Visualization</span>
+      <span>Stakeholder Communication</span>
+      <span>Storytelling with Data</span>
     </div>
+  </div>
+
+  <div class="section">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Customer Churn Dashboard</h3>
+        <p>Built a predictive model and dashboard to monitor churn risk and behavioral segments across multiple business units.</p>
+      </div>
+      <div class="project-card">
+        <h3>Hello Alberta Reporting</h3>
+        <p>Created performance dashboards and led data validation for a marketing initiative targeting Alberta-based members.</p>
+      </div>
+      <!-- Add more projects as needed -->
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:ritika@example.com">ritika@example.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a></p>
+  </div>
+
+  <footer>
+    © 2025 Ritika Khurana. All rights reserved.
+  </footer>
+
 </body>
 </html>
