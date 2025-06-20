@@ -344,4 +344,15 @@
     chartBackground.innerHTML = ""; // Clear previous charts
     for (let i = 0; i < 6; i++) {
       createLineChart();
-     
+      createBarChart();
+    }
+  }
+
+  generateCharts();
+
+  // Regenerate charts every 10 seconds
+  setInterval(generateCharts, 10000);
+</script>
+
+</body>
+</html>
