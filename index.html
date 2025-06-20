@@ -8,8 +8,8 @@
   /* === Background styles === */
   body, html {
     margin: 0; padding: 0; height: 100%;
-    background-color: #111; /* Dark background for contrast */
-    color: #ddd;
+    background-color: #f9fafb; /* Light background */
+    color: #1f2937;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
@@ -21,20 +21,21 @@
     pointer-events: none;
     z-index: 0;
     background-color: transparent;
+    overflow: hidden;
   }
 
   .chart-shape {
     position: absolute;
     fill: none;
     stroke-width: 2;
-    stroke: rgba(37, 99, 235, 0.6); /* brighter, more visible blue */
-    animation: floatChart 15s ease-in-out infinite;
+    stroke: rgba(37, 99, 235, 0.1); /* light blue, subtle */
+    animation: floatChart 18s linear infinite;
   }
 
   @keyframes floatChart {
-    0% {transform: translateY(0) scale(1); opacity: 0.3;}
-    50% {transform: translateY(-20px) scale(1.05); opacity: 0.6;}
-    100% {transform: translateY(0) scale(1); opacity: 0.3;}
+    0% {transform: translateY(0) scale(1); opacity: 0.15;}
+    50% {transform: translateY(-20px) scale(1.05); opacity: 0.35;}
+    100% {transform: translateY(0) scale(1); opacity: 0.15;}
   }
 
   /* === Page container styles === */
@@ -48,13 +49,13 @@
   .left, .right {
     width: 25%;
     padding: 30px 20px;
-    background-color: #222; /* Dark panel */
+    background-color: #f3f4f6; /* Light panels */
   }
 
   .middle {
     width: 50%;
     padding: 40px 30px;
-    background-color: #333; /* Dark panel */
+    background-color: #ffffff; /* White center */
   }
 
   img.profile-pic {
@@ -62,20 +63,20 @@
     height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #2563eb;
-    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.5);
+    border: 4px solid white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: block;
     margin: 0 auto 20px;
   }
 
   h1, h2 {
-    color: #eee;
+    color: #1f2937;
   }
 
   p.intro {
     text-align: center;
     font-size: 1rem;
-    color: #bbb;
+    color: #4b5563;
   }
 
   .section {
@@ -87,13 +88,12 @@
     border-left: 4px solid #2563eb;
     padding-left: 10px;
     margin-bottom: 16px;
-    color: #eee;
+    color: #1f2937;
   }
 
   .skills-list span {
     display: inline-block;
-    background-color: #2563eb;
-    color: white;
+    background-color: #e0e7ff;
     padding: 8px 14px;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -101,24 +101,23 @@
   }
 
   .project-card {
-    background: #444;
+    background: #f3f4f6;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   }
 
   .project-card h3 {
     margin-top: 0;
     font-size: 1.1rem;
-    color: #cbd5e1;
   }
 
   .hobbies-list {
     list-style: none;
     padding-left: 0;
     font-size: 0.95rem;
-    color: #ccc;
+    color: #374151;
   }
 
   .hobbies-list li {
@@ -135,7 +134,7 @@
     padding: 20px;
     font-size: 0.8rem;
     color: #6b7280;
-    background-color: #111;
+    background-color: #f9fafb;
     position: relative;
     z-index: 10;
   }
@@ -153,7 +152,7 @@
   .stats-section {
     display: flex;
     justify-content: space-around;
-    background-color: #222;
+    background-color: #f3f4f6;
     padding: 30px 20px;
     margin-top: 20px;
     border-radius: 12px;
@@ -309,7 +308,7 @@
 
     const polyline = document.createElementNS(svgNS, "polyline");
     polyline.setAttribute("points", points);
-    polyline.setAttribute("stroke", "rgba(37, 99, 235, 0.6)");
+    polyline.setAttribute("stroke", "rgba(37, 99, 235, 0.1)");
     polyline.setAttribute("fill", "none");
 
     svg.appendChild(polyline);
@@ -333,7 +332,7 @@
       rect.setAttribute("width", "10");
       rect.setAttribute("y", `${10 + Math.random() * 25}`);
       rect.setAttribute("height", `${5 + Math.random() * 20}`);
-      rect.setAttribute("fill", "rgba(37, 99, 235, 0.2)");
+      rect.setAttribute("fill", "rgba(37, 99, 235, 0.07)");
       svg.appendChild(rect);
     }
 
