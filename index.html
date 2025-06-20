@@ -1,378 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ritika Khurana | Portfolio</title>
-  <style>
-    /* === Your original CSS - with minor fixes === */
-    .chart-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-      background-color: transparent;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ritika Khurana | Portfolio</title>
+<style>
+  /* === Background styles === */
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    background-color: #111; /* Dark background for contrast */
+    color: #ddd;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 
-    .chart-shape {
-      position: absolute;
-      fill: none;
-      stroke-width: 2;
-      /* Changed stroke for visibility */
-      stroke: rgba(37, 99, 235, 0.2);
-      animation: floatChart 18s ease-in-out infinite;
-    }
+  #chartBackground {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    background-color: transparent;
+  }
 
-    @keyframes floatChart {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.3;
-      }
-      50% {
-        transform: translateY(-20px) scale(1.05);
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.3;
-      }
-    }
+  .chart-shape {
+    position: absolute;
+    fill: none;
+    stroke-width: 2;
+    stroke: rgba(37, 99, 235, 0.3); /* Blue-ish */
+    animation: floatChart 15s ease-in-out infinite;
+  }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9fafb;
-      color: #1f2937;
-      position: relative;
-      overflow-x: hidden;
-    }
+  @keyframes floatChart {
+    0% {transform: translateY(0) scale(1); opacity: 0.3;}
+    50% {transform: translateY(-20px) scale(1.05); opacity: 0.6;}
+    100% {transform: translateY(0) scale(1); opacity: 0.3;}
+  }
 
-    .container {
-      display: flex;
-      min-height: 100vh;
-      position: relative;
-      z-index: 10; /* Make sure container is above background */
-    }
+  /* === Page container styles === */
+  .container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    z-index: 10; /* Above the background */
+  }
 
-    .left, .right {
-      width: 25%;
-      padding: 30px 20px;
-      background-color: #f3f4f6;
-    }
+  .left, .right {
+    width: 25%;
+    padding: 30px 20px;
+    background-color: #222; /* Dark panel */
+  }
 
-    .middle {
-      width: 50%;
-      padding: 40px 30px;
-      background-color: #ffffff;
-    }
+  .middle {
+    width: 50%;
+    padding: 40px 30px;
+    background-color: #333; /* Dark panel */
+  }
 
-    img.profile-pic {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      display: block;
-      margin: 0 auto 20px;
-    }
+  img.profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #2563eb;
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.5);
+    display: block;
+    margin: 0 auto 20px;
+  }
 
-    h1 {
-      text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
+  h1, h2 {
+    color: #eee;
+  }
 
-    p.intro {
-      text-align: center;
-      font-size: 1rem;
-      color: #4b5563;
-    }
+  p.intro {
+    text-align: center;
+    font-size: 1rem;
+    color: #bbb;
+  }
 
-    .section {
-      margin-bottom: 40px;
-    }
+  .section {
+    margin-bottom: 40px;
+  }
 
-    .section h2 {
-      font-size: 1.4rem;
-      border-left: 4px solid #2563eb;
-      padding-left: 10px;
-      margin-bottom: 16px;
-      color: #1f2937;
-    }
+  .section h2 {
+    font-size: 1.4rem;
+    border-left: 4px solid #2563eb;
+    padding-left: 10px;
+    margin-bottom: 16px;
+    color: #eee;
+  }
 
-    .skills-list span {
-      display: inline-block;
-      background-color: #e0e7ff;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      margin: 6px 6px 0 0;
-    }
+  .skills-list span {
+    display: inline-block;
+    background-color: #2563eb;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin: 6px 6px 0 0;
+  }
 
-    .project-card {
-      background: #f3f4f6;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    .project-card h3 {
-      margin-top: 0;
-      font-size: 1.1rem;
-    }
-
-    .hobbies-list {
-      list-style: none;
-      padding-left: 0;
-      font-size: 0.95rem;
-      color: #374151;
-    }
-
-    .hobbies-list li {
-      margin-bottom: 10px;
-    }
-
-    a {
-      color: #2563eb;
-      text-decoration: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.8rem;
-      color: #6b7280;
-      background-color: #f9fafb;
-      position: relative;
-      z-index: 10;
-    }
-
-    @media screen and (max-width: 900px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .left, .middle, .right {
-        width: 100%;
-      }
-    }
-
-    .stats-section {
-      display: flex;
-      justify-content: space-around;
-      background-color: #f3f4f6;
-      padding: 30px 20px;
-      margin-top: 20px;
-      border-radius: 12px;
-    }
-
-    .stat-box {
-      font-size: 1rem;
-      text-align: center;
-      padding: 10px;
-    }
-
-    .stat-box .number {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #2563eb;
-      transition: all 0.3s ease;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Background animated charts container -->
-  <div class="chart-background" id="chartBackground"></div>
-
-  <!-- Your original content container -->
-  <div class="container">
-    <!-- LEFT PANEL -->
-    <aside class="left">
-      <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
-      <h1>Ritika Khurana</h1>
-      <p class="intro">
-        IIBA Certified Business Data Analyst.I have over 5 years of experience transforming raw data into actionable insights that drive strategic decisions.  I empower business teams to make confident, informed decisions by providing clear, data-backed visibility into where we stand and how to move forward effectively. Skilled in SQL, Snowflake, Power BI, and Excel, I specialize in operational reporting, data storytelling, and cross-functional collaboration to drive performance and strategic alignment.
-      </p>
-    </aside>
-
-    <!-- MIDDLE CONTENT -->
-    <main class="middle">
-      <div class="section">
-        <h2>Projects</h2>
-        <div class="project-card">
-          <h3>Customer Engagement Rate</h3>
-          <p>Built a Power BI dashboard to monitor churn risk using behavioral clustering across multiple business units.</p>
-        </div>
-        <div class="project-card">
-          <h3>Hello Alberta Program</h3>
-          <p>Led data validation and performance reporting for a province-wide member engagement campaign.</p>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Skills</h2>
-        <div class="skills-list">
-          <span>SQL</span>
-          <span>Snowflake</span>
-          <span>Power BI</span>
-          <span>Excel</span>
-          <span>Python (Basic)</span>
-          <span>Data Storytelling</span>
-          <span>Stakeholder Engagement</span>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Quick Stats</h2>
-        <div class="stats-section">
-          <div class="stat-box">
-            <div class="number" data-target="4">0</div>
-            <p>Years of Experience</p>
-          </div>
-          <div class="stat-box">
-            <div class="number" data-target="25">0</div>
-            <p>Dashboards Built</p>
-          </div>
-          <div class="stat-box">
-            <div class="number" data-target="10">0</div>
-            <p>Tools Mastered</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Experience</h2>
-        <p><strong>Business Data Analyst</strong> — McKesson Canada<br />
-        <small>Jun 2023 – Present</small></p>
-        <p>Work on cross-BU data initiatives, validate logic with SMEs, and deliver insights for strategic decisions.</p>
-
-        <p><strong>Operations Analyst</strong> — AMA Alberta<br />
-        <small>2021 – 2023</small></p>
-        <p>Led reporting automation, created KPIs for Membership & Roadside teams, and supported data migration planning.</p>
-      </div>
-    </main>
-
-    <!-- RIGHT PANEL -->
-    <aside class="right">
-      <div class="section">
-        <h2>Outside Work</h2>
-        <ul class="hobbies-list">
-          <li>🎨 Love designing DIY crafts and hosting workshops</li>
-          <li>📚 Avid reader — mostly thrillers and non-fiction</li>
-          <li>🌄 Enjoy hiking and exploring Alberta's nature</li>
-          <li>🛐 Founder of “Crowd the Heaven” Christian apparel brand</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:ritika@example.com">ritika@example.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/ritika-khurana-b62a34166/" target="_blank" rel="noopener noreferrer">View Profile</a></p>
-      </div>
-    </aside>
-  </div>
-
-  <footer>
-    © 2025 Ritika Khurana. All rights reserved.
-  </footer>
-
-  <!-- Counter animation script -->
-  <script>
-    const counters = document.querySelectorAll('.number');
-    const speed = 200;
-
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / speed;
-
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(updateCount, 20);
-        } else {
-          counter.innerText = target;
-        }
-      };
-      updateCount();
-    });
-  </script>
-
-  <!-- Chart background animation script -->
-  <script>
-    const chartBackground = document.getElementById("chartBackground");
-
-    function clearCharts() {
-      while (chartBackground.firstChild) {
-        chartBackground.removeChild(chartBackground.firstChild);
-      }
-    }
-
-    function createLineChart() {
-      const svgNS = "http://www.w3.org/2000/svg";
-      const svg = document.createElementNS(svgNS, "svg");
-      svg.classList.add("chart-shape");
-      svg.setAttribute("viewBox", "0 0 100 50");
-      svg.style.top = `${Math.random() * 90}%`;
-      svg.style.left = `${Math.random() * 90}%`;
-      svg.style.width = `${80 + Math.random() * 120}px`;
-      svg.style.height = `${40 + Math.random() * 50}px`;
-      svg.style.animationDelay = `${Math.random() * 8}s`;
-
-      const points = Array.from({ length: 6 }, (_, i) => {
-        return `${i * 20},${5 + Math.random() * 40}`;
-      }).join(" ");
-
-      const polyline = document.createElementNS(svgNS, "polyline");
-      polyline.setAttribute("points", points);
-      polyline.setAttribute("stroke", "rgba(37, 99, 235, 0.2)");
-      polyline.setAttribute("fill", "none");
-
-      svg.appendChild(polyline);
-      chartBackground.appendChild(svg);
-    }
-
-    function createBarChart() {
-      const svgNS = "http://www.w3.org/2000/svg";
-      const svg = document.createElementNS(svgNS, "svg");
-      svg.classList.add("chart-shape");
-      svg.setAttribute("viewBox", "0 0 100 50");
-      svg.style.top = `${Math.random() * 90}%`;
-      svg.style.left = `${Math.random() * 90}%`;
-      svg.style.width = `${50 + Math.random() * 100}px`;
-      svg.style.height = `${30 + Math.random() * 60}px`;
-      svg.style.animationDelay = `${Math.random() * 10}s`;
-
-      for(let i=0; i<5; i++) {
-        const rect = document.createElementNS(svgNS, "rect");
-        rect.setAttribute("x", `${5 + i*20}`);
-        rect.setAttribute("width", "10");
-        rect.setAttribute("y", `${10 + Math.random() * 25}`);
-        rect.setAttribute("height", `${5 + Math.random() * 20}`);
-        rect.setAttribute("fill", "rgba(37, 99, 235, 0.15)");
-        svg.appendChild(rect);
-      }
-
-      chartBackground.appendChild(svg);
-    }
-
-    function generateCharts() {
-      clearCharts();
-      for(let i=0; i<6; i++) {
-        createLineChart();
-        createBarChart();
-      }
-    }
-
-    generateCharts();
-    setInterval(generateCharts, 10000);
-  </script>
-</body>
-</html>
+  .project-card {
+    background: #444;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.
