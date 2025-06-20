@@ -5,64 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ritika Khurana | Portfolio</title>
   <style>
-    .chart-background {
+ .chart-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: 0;
+  overflow: hidden;
   pointer-events: none;
+  background-color: transparent;
 }
 
-.mini-chart {
+.chart-shape {
   position: absolute;
   fill: none;
-  stroke: rgba(37, 99, 235, 0.08); /* soft blue */
   stroke-width: 2;
-  width: 150px;
-  height: 75px;
-  animation: floatChart 20s linear infinite;
-}
-
-.mini-chart:nth-child(1) {
-  top: 10%;
-  left: 20%;
-  animation-delay: 0s;
-}
-
-.mini-chart:nth-child(2) {
-  top: 50%;
-  left: 60%;
-  animation-delay: 6s;
-}
-
-.mini-chart:nth-child(3) {
-  top: 30%;
-  left: 80%;
-  animation-delay: 12s;
+  stroke: rgba(255, 255, 255, 0.05); /* Light stroke on dark bg */
+  animation: floatChart 18s linear infinite;
 }
 
 @keyframes floatChart {
   0% {
     transform: translateY(0) scale(1);
-    opacity: 0.3;
+    opacity: 0.15;
   }
   50% {
     transform: translateY(-20px) scale(1.05);
-    opacity: 0.6;
+    opacity: 0.35;
   }
   100% {
     transform: translateY(0) scale(1);
-    opacity: 0.3;
+    opacity: 0.15;
   }
-}
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
+}    body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9fafb;
@@ -200,7 +176,7 @@
   </style>
 </head>
 <body>
-<div class="chart-background">
+<div class="chart-background" id="chartBackground"></div>
   <svg class="mini-chart" viewBox="0 0 100 50">
     <polyline points="0,40 20,30 40,20 60,30 80,10 100,25" />
   </svg>
@@ -322,6 +298,62 @@
 
     updateCount();
   });
+</script>
+<script>
+  const chartBackground = document.getElementById("chartBackground");
+
+  const createLineChart = () => {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "chart-shape");
+    svg.setAttribute("viewBox", "0 0 100 50");
+    svg.style.top = `${Math.random() * 90}%`;
+    svg.style.left = `${Math.random() * 90}%`;
+    svg.style.width = `${Math.random() * 120 + 80}px`;
+    svg.style.height = `${Math.random() * 50 + 40}px`;
+    svg.style.animationDelay = `${Math.random() * 8}s`;
+
+    const points = Array.from({ length: 6 }, (_, i) => {
+      const x = i * 20;
+      const y = Math.floor(Math.random() * 40) + 5;
+      return `${x},${y}`;
+    }).join(" ");
+
+    const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+    polyline.setAttribute("points", points);
+    polyline.setAttribute("stroke", "rgba(255,255,255,0.07)");
+
+    svg.appendChild(polyline);
+    chartBackground.appendChild(svg);
+  };
+
+  const createBarChart = () => {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "chart-shape");
+    svg.setAttribute("viewBox", "0 0 100 50");
+    svg.style.top = `${Math.random() * 90}%`;
+    svg.style.left = `${Math.random() * 90}%`;
+    svg.style.width = `${Math.random() * 100 + 50}px`;
+    svg.style.height = `${Math.random() * 60 + 30}px`;
+    svg.style.animationDelay = `${Math.random() * 10}s`;
+
+    for (let i = 0; i < 5; i++) {
+      const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      rect.setAttribute("x", `${i * 20 + 5}`);
+      rect.setAttribute("width", "10");
+      rect.setAttribute("y", `${Math.random() * 25 + 10}`);
+      rect.setAttribute("height", `${Math.random() * 20 + 5}`);
+      rect.setAttribute("fill", "rgba(255,255,255,0.05)");
+      svg.appendChild(rect);
+    }
+
+    chartBackground.appendChild(svg);
+  };
+
+  // Generate 6 line charts + 6 bar charts
+  for (let i = 0; i < 6; i++) {
+    createLineChart();
+    createBarChart();
+  }
 </script>
 
 </body>
