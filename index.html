@@ -5,49 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ritika Khurana | Portfolio</title>
   <style>
- .chart-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  background-color: transparent;
-}
+    .chart-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background-color: transparent;
+    }
 
-.chart-shape {
-  position: absolute;
-  fill: none;
-  stroke-width: 2;
-  stroke: rgba(255, 255, 255, 0.05); /* Light stroke on dark bg */
-  animation: floatChart 18s linear infinite;
-}
+    .chart-shape {
+      position: absolute;
+      fill: none;
+      stroke-width: 2;
+      stroke: rgba(255, 255, 255, 0.05);
+      animation: floatChart 18s linear infinite;
+    }
 
-@keyframes floatChart {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.15;
-  }
-  50% {
-    transform: translateY(-20px) scale(1.05);
-    opacity: 0.35;
-  }
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.15;
-  }
-}    body {
+    @keyframes floatChart {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.15;
+      }
+      50% {
+        transform: translateY(-20px) scale(1.05);
+        opacity: 0.35;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.15;
+      }
+    }
+
+    body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9fafb;
       color: #1f2937;
+      position: relative;
+      overflow-x: hidden;
     }
 
     .container {
       display: flex;
       min-height: 100vh;
+      position: relative;
+      z-index: 10;
     }
 
     .left, .right {
@@ -141,6 +147,8 @@
       font-size: 0.8rem;
       color: #6b7280;
       background-color: #f9fafb;
+      position: relative;
+      z-index: 10;
     }
 
     @media screen and (max-width: 900px) {
@@ -151,42 +159,73 @@
       .left, .middle, .right {
         width: 100%;
       }
-    }.stats-section {
-  display: flex;
-  justify-content: space-around;
-  background-color: #f3f4f6;
-  padding: 30px 20px;
-  margin-top: 20px;
-  border-radius: 12px;
-}
+    }
 
-.stat-box {
-  font-size: 1rem;
-  text-align: center;
-  padding: 10px;
-}
+    .stats-section {
+      display: flex;
+      justify-content: space-around;
+      background-color: #f3f4f6;
+      padding: 30px 20px;
+      margin-top: 20px;
+      border-radius: 12px;
+    }
 
-.stat-box .number {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #2563eb;
-  transition: all 0.3s ease;
-}
+    .stat-box {
+      font-size: 1rem;
+      text-align: center;
+      padding: 10px;
+    }
 
+    .stat-box .number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #2563eb;
+      transition: all 0.3s ease;
+    }
+
+    /* Floating keywords styling */
+    .floating-keyword {
+      position: fixed;
+      top: 0;
+      left: 0;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: rgba(37, 99, 235, 0.3);
+      user-select: none;
+      pointer-events: none;
+      animation-name: floatKeywords;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      will-change: transform, opacity;
+      white-space: nowrap;
+    }
+
+    @keyframes floatKeywords {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translateY(-20px);
+        opacity: 0.6;
+      }
+    }
   </style>
 </head>
 <body>
-<div class="chart-background" id="chartBackground"></div>
-  <svg class="mini-chart" viewBox="0 0 100 50">
+
+  <div class="chart-background" id="chartBackground"></div>
+
+  <!-- Mini charts - kept if you want, but not inside any extra div -->
+  <svg class="mini-chart" viewBox="0 0 100 50" style="position: fixed; top: 10%; left: 5%; width: 100px; height: 50px; opacity: 0.07; pointer-events:none;">
     <polyline points="0,40 20,30 40,20 60,30 80,10 100,25" />
   </svg>
-  <svg class="mini-chart" viewBox="0 0 100 50">
+  <svg class="mini-chart" viewBox="0 0 100 50" style="position: fixed; top: 20%; left: 10%; width: 100px; height: 50px; opacity: 0.07; pointer-events:none;">
     <polyline points="0,25 20,20 40,35 60,15 80,20 100,10" />
   </svg>
-  <svg class="mini-chart" viewBox="0 0 100 50">
+  <svg class="mini-chart" viewBox="0 0 100 50" style="position: fixed; top: 15%; left: 15%; width: 100px; height: 50px; opacity: 0.07; pointer-events:none;">
     <polyline points="0,40 25,30 50,20 75,40 100,25" />
   </svg>
-</div>
 
   <div class="container">
     <!-- LEFT PANEL -->
@@ -194,7 +233,7 @@
       <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
       <h1>Ritika Khurana</h1>
       <p class="intro">
-        IIBA Certified Business Data Analyst.I have over 5 years of experience transforming raw data into actionable insights that drive strategic decisions.  I empower business teams to make confident, informed decisions by providing clear, data-backed visibility into where we stand and how to move forward effectively. Skilled in SQL, Snowflake, Power BI, and Excel, I specialize in operational reporting, data storytelling, and cross-functional collaboration to drive performance and strategic alignment.
+        IIBA Certified Business Data Analyst. I have over 5 years of experience transforming raw data into actionable insights that drive strategic decisions. I empower business teams to make confident, informed decisions by providing clear, data-backed visibility into where we stand and how to move forward effectively. Skilled in SQL, Snowflake, Power BI, and Excel, I specialize in operational reporting, data storytelling, and cross-functional collaboration to drive performance and strategic alignment.
       </p>
     </aside>
 
@@ -226,30 +265,30 @@
       </div>
 
       <div class="section">
-<div class="section">
-  <h2>Quick Stats</h2>
-  <div class="stats-section">
-    <div class="stat-box">
-      <div class="number" data-target="4">0</div>
-      <p>Years of Experience</p>
-    </div>
-    <div class="stat-box">
-      <div class="number" data-target="25">0</div>
-      <p>Dashboards Built</p>
-    </div>
-    <div class="stat-box">
-      <div class="number" data-target="10">0</div>
-      <p>Tools Mastered</p>
-    </div>
-  </div>
-</div>
+        <h2>Quick Stats</h2>
+        <div class="stats-section">
+          <div class="stat-box">
+            <div class="number" data-target="4">0</div>
+            <p>Years of Experience</p>
+          </div>
+          <div class="stat-box">
+            <div class="number" data-target="25">0</div>
+            <p>Dashboards Built</p>
+          </div>
+          <div class="stat-box">
+            <div class="number" data-target="10">0</div>
+            <p>Tools Mastered</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="section">
         <h2>Experience</h2>
-        <p><strong>Business Data Analyst</strong> — McKesson Canada<br>
+        <p><strong>Business Data Analyst</strong> — McKesson Canada<br />
         <small>Jun 2023 – Present</small></p>
         <p>Work on cross-BU data initiatives, validate logic with SMEs, and deliver insights for strategic decisions.</p>
 
-        <p><strong>Operations Analyst</strong> — AMA Alberta<br>
+        <p><strong>Operations Analyst</strong> — AMA Alberta<br />
         <small>2021 – 2023</small></p>
         <p>Led reporting automation, created KPIs for Membership & Roadside teams, and supported data migration planning.</p>
       </div>
@@ -278,9 +317,11 @@
   <footer>
     © 2025 Ritika Khurana. All rights reserved.
   </footer>
+
 <script>
+  // Animate counters
   const counters = document.querySelectorAll('.number');
-  const speed = 200; // Adjust to control speed
+  const speed = 200;
 
   counters.forEach(counter => {
     const updateCount = () => {
@@ -295,12 +336,19 @@
         counter.innerText = target;
       }
     };
-
     updateCount();
   });
 </script>
+
 <script>
   const chartBackground = document.getElementById("chartBackground");
+
+  // Clear existing charts before regenerating
+  function clearCharts() {
+    while (chartBackground.firstChild) {
+      chartBackground.removeChild(chartBackground.firstChild);
+    }
+  }
 
   const createLineChart = () => {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -349,11 +397,60 @@
     chartBackground.appendChild(svg);
   };
 
-  // Generate 6 line charts + 6 bar charts
-  for (let i = 0; i < 6; i++) {
-    createLineChart();
-    createBarChart();
+  function generateCharts() {
+    clearCharts();
+    for (let i = 0; i < 6; i++) {
+      createLineChart();
+      createBarChart();
+    }
   }
+
+  // Initial generate
+  generateCharts();
+
+  // Regenerate every 10 seconds
+  setInterval(generateCharts, 10000);
+</script>
+
+<script>
+  // Floating keywords: SQL, ETL, Power BI
+  const keywords = ["SQL", "ETL", "Power BI"];
+  const floatingKeywords = [];
+
+  function createFloatingKeyword(text) {
+    const span = document.createElement('span');
+    span.classList.add('floating-keyword');
+    span.innerText = text;
+    span.style.top = `${Math.random() * 80 + 10}%`;
+    span.style.left = `${Math.random() * 90 + 5}%`;
+    span.style.fontSize = `${Math.random() * 16 + 12}px`;
+    span.style.animationDuration = `${Math.random() * 8 + 6}s`;
+    document.body.appendChild(span);
+    floatingKeywords.push(span);
+  }
+
+  function moveFloatingKeywords() {
+    floatingKeywords.forEach(span => {
+      const top = parseFloat(span.style.top);
+      const left = parseFloat(span.style.left);
+
+      // Random small movement within ±1.5%
+      const newTop = top + (Math.random() * 3 - 1.5);
+      const newLeft = left + (Math.random() * 3 - 1.5);
+
+      // Keep within viewport bounds
+      span.style.top = `${Math.min(Math.max(newTop, 5), 95)}%`;
+      span.style.left = `${Math.min(Math.max(newLeft, 2), 95)}%`;
+    });
+  }
+
+  // Create 10 floating keywords randomly distributed
+  for (let i = 0; i < 10; i++) {
+    createFloatingKeyword(keywords[i % keywords.length]);
+  }
+
+  // Animate floating keywords movement every 3 seconds
+  setInterval(moveFloatingKeywords, 3000);
 </script>
 
 </body>
