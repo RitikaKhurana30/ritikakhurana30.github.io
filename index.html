@@ -315,6 +315,18 @@
     const chartBackground = document.getElementById("chartBackground");
     const svgNS = "http://www.w3.org/2000/svg";
 
+    // Colors for pastel charts
+    const pastelColors = [
+      "rgba(165, 216, 255, 0.7)",  // pastel blue line
+      "rgba(197, 246, 250, 0.5)",  // mint bars
+      "rgba(255, 214, 165, 0.5)",  // peach bars
+      "rgba(208, 191, 255, 0.5)",  // lavender bars
+      "rgba(255, 179, 186, 0.5)",  // pastel pink pie
+      "rgba(255, 223, 186, 0.5)",  // pastel orange pie
+      "rgba(255, 255, 186, 0.5)",  // pastel yellow pie
+      "rgba(186, 255, 201, 0.5)",  // pastel green pie
+    ];
+
     function createLineChart() {
       const svg = document.createElementNS(svgNS, "svg");
       svg.classList.add("chart-shape");
@@ -329,8 +341,7 @@
 
       const polyline = document.createElementNS(svgNS, "polyline");
       polyline.setAttribute("points", points);
-      // Pastel blue stroke
-      polyline.setAttribute("stroke", "rgba(165, 216, 255, 0.7)");
+      polyline.setAttribute("stroke", pastelColors[0]);
       polyline.setAttribute("fill", "none");
 
       svg.appendChild(polyline);
@@ -347,21 +358,59 @@
       svg.style.height = "80px";
       svg.style.animationDelay = `${Math.random() * 5}s`;
 
-      const pastelColors = [
-        "rgba(197, 246, 250, 0.5)",  // mint
-        "rgba(255, 214, 165, 0.5)",  // peach
-        "rgba(208, 191, 255, 0.5)",  // lavender
-        "rgba(165, 216, 255, 0.5)"   // pastel blue
-      ];
-
       for (let i = 0; i < 5; i++) {
         const rect = document.createElementNS(svgNS, "rect");
         rect.setAttribute("x", `${10 + i * 20}`);
         rect.setAttribute("width", "12");
         rect.setAttribute("y", `${10 + Math.random() * 25}`);
         rect.setAttribute("height", `${20 + Math.random() * 15}`);
-        rect.setAttribute("fill", pastelColors[i % pastelColors.length]);
+        rect.setAttribute("fill", pastelColors[1 + (i % 3)]); // cycling mint, peach, lavender
         svg.appendChild(rect);
+      }
+
+      chartBackground.appendChild(svg);
+    }
+
+    function createPieChart() {
+      const svg = document.createElementNS(svgNS, "svg");
+      svg.classList.add("chart-shape");
+      svg.setAttribute("viewBox", "0 0 100 100");
+      svg.style.top = `${Math.random() * 90}%`;
+      svg.style.left = `${Math.random() * 90}%`;
+      svg.style.width = "120px";
+      svg.style.height = "120px";
+      svg.style.animationDelay = `${Math.random() * 5}s`;
+
+      // Pie slices data (randomized)
+      const slices = [];
+      let total = 0;
+      for (let i = 0; i < 4; i++) {
+        const value = 20 + Math.random() * 30;
+        slices.push(value);
+        total += value;
+      }
+
+      let startAngle = 0;
+
+      for (let i = 0; i < slices.length; i++) {
+        const sliceAngle = (slices[i] / total) * 2 * Math.PI;
+        const x1 = 50 + 40 * Math.cos(startAngle);
+        const y1 = 50 + 40 * Math.sin(startAngle);
+        startAngle += sliceAngle;
+        const x2 = 50 + 40 * Math.cos(startAngle);
+        const y2 = 50 + 40 * Math.sin(startAngle);
+
+        const path = document.createElementNS(svgNS, "path");
+        const d = [
+          `M 50 50`,               // Move to center
+          `L ${x1.toFixed(2)} ${y1.toFixed(2)}`, // Line to start point on circle
+          `A 40 40 0 ${sliceAngle > Math.PI ? 1 : 0} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`, // Arc
+          `Z`                      // Close path back to center
+        ].join(" ");
+
+        path.setAttribute("d", d);
+        path.setAttribute("fill", pastelColors[4 + (i % 4)]);
+        svg.appendChild(path);
       }
 
       chartBackground.appendChild(svg);
@@ -369,9 +418,10 @@
 
     function generateCharts() {
       chartBackground.innerHTML = "";
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 7; i++) {
         createLineChart();
         createBarChart();
+        createPieChart();
       }
     }
 
