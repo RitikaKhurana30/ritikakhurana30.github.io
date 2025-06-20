@@ -105,4 +105,254 @@
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .project-card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #cbd5e1;
+  }
+
+  .hobbies-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+
+  .hobbies-list li {
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    color: #6b7280;
+    background-color: #111;
+    position: relative;
+    z-index: 10;
+  }
+
+  @media screen and (max-width: 900px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .left, .middle, .right {
+      width: 100%;
+    }
+  }
+
+  .stats-section {
+    display: flex;
+    justify-content: space-around;
+    background-color: #222;
+    padding: 30px 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+  }
+
+  .stat-box {
+    font-size: 1rem;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .stat-box .number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2563eb;
+    transition: all 0.3s ease;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background container -->
+<div id="chartBackground"></div>
+
+<!-- Page content -->
+<div class="container">
+  <aside class="left">
+    <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
+    <h1>Ritika Khurana</h1>
+    <p class="intro">
+      IIBA Certified Business Data Analyst with 5+ years of experience delivering actionable insights. Skilled in SQL, Snowflake, Power BI, and Excel.
+    </p>
+  </aside>
+
+  <main class="middle">
+    <div class="section">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <h3>Customer Engagement Rate</h3>
+        <p>Built a Power BI dashboard to monitor churn risk using behavioral clustering across multiple business units.</p>
+      </div>
+      <div class="project-card">
+        <h3>Hello Alberta Program</h3>
+        <p>Led data validation and performance reporting for a province-wide member engagement campaign.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <span>SQL</span>
+        <span>Snowflake</span>
+        <span>Power BI</span>
+        <span>Excel</span>
+        <span>Python (Basic)</span>
+        <span>Data Storytelling</span>
+        <span>Stakeholder Engagement</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Quick Stats</h2>
+      <div class="stats-section">
+        <div class="stat-box">
+          <div class="number" data-target="4">0</div>
+          <p>Years of Experience</p>
+        </div>
+        <div class="stat-box">
+          <div class="number" data-target="25">0</div>
+          <p>Dashboards Built</p>
+        </div>
+        <div class="stat-box">
+          <div class="number" data-target="10">0</div>
+          <p>Tools Mastered</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Experience</h2>
+      <p><strong>Business Data Analyst</strong> — McKesson Canada<br />
+      <small>Jun 2023 – Present</small></p>
+      <p>Work on cross-BU data initiatives, validate logic with SMEs, and deliver insights for strategic decisions.</p>
+
+      <p><strong>Operations Analyst</strong> — AMA Alberta<br />
+      <small>2021 – 2023</small></p>
+      <p>Led reporting automation, created KPIs for Membership & Roadside teams, and supported data migration planning.</p>
+    </div>
+  </main>
+
+  <aside class="right">
+    <div class="section">
+      <h2>Outside Work</h2>
+      <ul class="hobbies-list">
+        <li>🎨 Love designing DIY crafts and hosting workshops</li>
+        <li>📚 Avid reader — mostly thrillers and non-fiction</li>
+        <li>🌄 Enjoy hiking and exploring Alberta's nature</li>
+        <li>🛐 Founder of “Crowd the Heaven” Christian apparel brand</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:ritika@example.com">ritika@example.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/ritika-khurana-b62a34166/" target="_blank" rel="noopener noreferrer">View Profile</a></p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  © 2025 Ritika Khurana. All rights reserved.
+</footer>
+
+<script>
+  // Animate numbers counting up
+  const counters = document.querySelectorAll('.number');
+  const speed = 200;
+
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = target / speed;
+
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+</script>
+
+<script>
+  const chartBackground = document.getElementById("chartBackground");
+
+  function createLineChart() {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.classList.add("chart-shape");
+    svg.setAttribute("viewBox", "0 0 100 50");
+    svg.style.top = `${Math.random() * 90}%`;
+    svg.style.left = `${Math.random() * 90}%`;
+    svg.style.width = `${80 + Math.random() * 120}px`;
+    svg.style.height = `${40 + Math.random() * 50}px`;
+    svg.style.animationDelay = `${Math.random() * 10}s`;
+
+    const points = Array.from({ length: 6 }, (_, i) => {
+      return `${i * 20},${10 + Math.random() * 30}`;
+    }).join(" ");
+
+    const polyline = document.createElementNS(svgNS, "polyline");
+    polyline.setAttribute("points", points);
+    polyline.setAttribute("stroke", "rgba(37, 99, 235, 0.3)");
+    polyline.setAttribute("fill", "none");
+
+    svg.appendChild(polyline);
+    chartBackground.appendChild(svg);
+  }
+
+  function createBarChart() {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.classList.add("chart-shape");
+    svg.setAttribute("viewBox", "0 0 100 50");
+    svg.style.top = `${Math.random() * 90}%`;
+    svg.style.left = `${Math.random() * 90}%`;
+    svg.style.width = `${60 + Math.random() * 100}px`;
+    svg.style.height = `${30 + Math.random() * 60}px`;
+    svg.style.animationDelay = `${Math.random() * 10}s`;
+
+    for (let i = 0; i < 5; i++) {
+      const rect = document.createElementNS(svgNS, "rect");
+      rect.setAttribute("x", `${i * 20 + 5}`);
+      rect.setAttribute("width", "10");
+      rect.setAttribute("y", `${10 + Math.random() * 25}`);
+      rect.setAttribute("height", `${5 + Math.random() * 20}`);
+      rect.setAttribute("fill", "rgba(37, 99, 235, 0.2)");
+      svg.appendChild(rect);
+    }
+
+    chartBackground.appendChild(svg);
+  }
+
+  function generateCharts() {
+    chartBackground.innerHTML = ""; // Clear previous charts
+    for (let i = 0; i < 6; i++) {
+      createLineChart();
+      createBarChart();
+    }
+  }
+
+  generateCharts();
+
+  // Regenerate every 10 seconds
+  setInterval(generateCharts, 10000);
+</script>
+
+</body>
+</html>
