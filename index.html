@@ -238,6 +238,27 @@
   <footer>
     © 2025 Ritika Khurana. All rights reserved.
   </footer>
+<script>
+  const counters = document.querySelectorAll('.number');
+  const speed = 200; // Adjust to control speed
+
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = target / speed;
+
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+
+    updateCount();
+  });
+</script>
 
 </body>
 </html>
