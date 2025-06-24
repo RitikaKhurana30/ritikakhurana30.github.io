@@ -4,241 +4,216 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ritika Khurana | Portfolio</title>
- <style>
-  /* Reset & base */
-  * {
-    box-sizing: border-box;
-  }
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f7ff; /* Very light blue background */
-    color: #1f2937; /* Dark text */
-    overflow-x: hidden;
-  }
-
-  /* Navbar at top */
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 60px;
-    background-color: #90caf9; /* Light pastel blue */
-    box-shadow: 0 2px 6px rgba(33, 150, 243, 0.3);
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    z-index: 100;
-    color: #0d47a1;
-    font-weight: 700;
-    font-size: 1.2rem;
-    user-select: none;
-  }
-
-  /* Container below navbar */
-  .container {
-    display: flex;
-    min-height: 100vh;
-    padding-top: 60px; /* To avoid content behind navbar */
-    position: relative;
-    z-index: 10;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  /* Panels */
-  .left, .right {
-    width: 25%;
-  }
-  .middle {
-    width: 50%;
-  }
-
-  /* Cards for content */
-  aside, main {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(144, 202, 249, 0.3);
-    padding: 30px 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    animation: fadeInUp 1s ease forwards;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  /* Delay fade-ins on each section for a subtle stagger */
-  aside.left { animation-delay: 0.2s; }
-  main.middle { animation-delay: 0.4s; }
-  aside.right { animation-delay: 0.6s; }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
     }
-  }
-
-  /* Profile Picture */
-  img.profile-pic {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #90caf9;
-    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
-    margin: 0 auto;
-    display: block;
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin: 15px 0 5px;
-    color: #0d47a1;
-  }
-
-  p.designation {
-    font-size: 1rem;
-    text-align: left;
-    font-weight: bold;
-    margin: 0 0 8px 0;
-    color: #1565c0;
-  }
-
- p.intro {
-  text-align: justify;
-  font-size: 1rem;
-  color: #374151;
-  line-height: 1.6;
-  margin: 0;
-}
-
-
-  .section h2 {
-    font-size: 1.5rem;
-    border-left: 5px solid #90caf9;
-    padding-left: 12px;
-    margin-bottom: 20px;
-    color: #1976d2;
-  }
-
-  /* Skills Tags */
-  .skills-list span {
-    display: inline-block;
-    background-color: #bbdefb;
-    color: #0d47a1;
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 0.95rem;
-    margin: 0 8px 8px 0;
-    font-weight: 600;
-    user-select: none;
-  }
-
-  /* Project Card */
-  .project-card {
-    background-color: #e3f2fd;
-    border-radius: 10px;
-    padding: 18px 20px;
-    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
-    transition: box-shadow 0.3s ease;
-  }
-  .project-card:hover {
-    box-shadow: 0 6px 14px rgba(33, 150, 243, 0.4);
-  }
-  .project-card h3 {
-    margin-top: 0;
-    color: #1565c0;
-    font-size: 1.2rem;
-  }
-  .project-card p {
-    margin: 8px 0 0;
-    color: #1e293b;
-    line-height: 1.3;
-  }
-
-  /* Hobbies List */
-  .hobbies-list {
-    list-style: none;
-    padding-left: 0;
-    color: #374151;
-    font-size: 1rem;
-  }
-  .hobbies-list li {
-    margin-bottom: 12px;
-    line-height: 1.3;
-  }
-
-  /* Links */
-  a {
-    color: #1976d2;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-  /* Contact */
-  .section p {
-    margin: 8px 0;
-    color: #334155;
-    font-size: 1rem;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 20px 10px;
-    font-size: 0.85rem;
-    color: #64748b;
-    background-color: transparent;
-    margin-top: 40px;
-  }
-
-  /* Responsive */
-  @media screen and (max-width: 900px) {
-    .container {
-      flex-direction: column;
-      padding: 80px 20px 20px;
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f7ff; /* Very light blue background */
+      color: #1f2937; /* Dark text */
+      overflow-x: hidden;
     }
-    .left, .middle, .right {
-      width: 100%;
-    }
+
+    /* Navbar at top */
     header {
-      justify-content: center;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background-color: #90caf9; /* Light pastel blue */
+      box-shadow: 0 2px 6px rgba(33, 150, 243, 0.3);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      z-index: 100;
+      color: #0d47a1;
+      font-weight: 700;
+      font-size: 1.2rem;
+      user-select: none;
     }
-  }
 
-  /* Background Chart Styling */
-  #chartBackground {
-    position: fixed;
-    top: 60px; /* below navbar */
-    left: 0;
-    width: 100vw;
-    height: calc(100vh - 60px);
-    pointer-events: none;
-    z-index: 0;
-    background: #f0f7ff; /* match page background */
-    overflow: visible;
-  }
-  .chart-shape {
-    position: absolute;
-    fill: none;
-    stroke-width: 2;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-    animation: floatChart 10s ease-in-out infinite;
-  }
-  @keyframes floatChart {
-    0%   { transform: translateY(0) scale(1); opacity: 0.4; }
-    50%  { transform: translateY(-15px) scale(1.05); opacity: 1; }
-    100% { transform: translateY(0) scale(1); opacity: 0.4; }
-  }
-</style>
+    /* Container below navbar */
+    .container {
+      display: flex;
+      min-height: 100vh;
+      padding-top: 60px; /* To avoid content behind navbar */
+      position: relative;
+      z-index: 10;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
+    /* Two panels with equal height but left 35%, right 65% */
+    .left, .right {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(144, 202, 249, 0.3);
+      padding: 30px 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .left {
+      width: 35%;
+      animation-delay: 0.2s;
+    }
+    .right {
+      width: 65%;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Profile Picture */
+    img.profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #90caf9;
+      box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
+      margin: 0 auto;
+      display: block;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin: 15px 0 5px;
+      color: #0d47a1;
+    }
+
+    p.designation {
+      font-size: 1rem;
+      text-align: center;
+      font-weight: bold;
+      margin: 0 0 20px 0;
+      color: #1565c0;
+    }
+
+    p.intro {
+      text-align: justify;
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      border-left: 5px solid #90caf9;
+      padding-left: 12px;
+      margin-bottom: 20px;
+      color: #1976d2;
+    }
+
+    /* Skills Tags */
+    .skills-list span {
+      display: inline-block;
+      background-color: #bbdefb;
+      color: #0d47a1;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      margin: 0 8px 8px 0;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    /* Project Card */
+    .project-card {
+      background-color: #e3f2fd;
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+      transition: box-shadow 0.3s ease;
+      margin-bottom: 20px;
+    }
+    .project-card:hover {
+      box-shadow: 0 6px 14px rgba(33, 150, 243, 0.4);
+    }
+    .project-card h3 {
+      margin-top: 0;
+      color: #1565c0;
+      font-size: 1.2rem;
+    }
+    .project-card p {
+      margin: 8px 0 0;
+      color: #1e293b;
+      line-height: 1.3;
+    }
+    .project-card img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 8px;
+      margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(33,150,243,0.2);
+    }
+
+    /* Hobbies List */
+    .hobbies-list {
+      list-style: none;
+      padding-left: 0;
+      color: #374151;
+      font-size: 1rem;
+    }
+    .hobbies-list li {
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    /* Links */
+    a {
+      color: #1976d2;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    .section p {
+      margin: 8px 0;
+      color: #334155;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.85rem;
+      color: #64748b;
+      background-color: transparent;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        padding: 80px 20px 20px;
+      }
+      .left, .right {
+        width: 100%;
+      }
+      header {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -246,47 +221,49 @@
     Ritika Khurana | Business Data Analyst
   </header>
 
-  <div id="chartBackground"></div>
-
   <div class="container">
     <!-- LEFT PANEL -->
-   <aside class="left">
-  <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
-  <h1>Ritika Khurana</h1>
-  <p class="designation">IIBA | (CBDA®) Certified Business Data Analyst</p>
-  <p class="intro">
-    &emsp;I have over 5 years of experience transforming raw data into actionable insights that drive strategic decisions. I empower business teams to make confident, informed decisions by providing clear, data-backed visibility into where we stand and how to move forward effectively. Skilled in SQL, Snowflake, Power BI, and Excel, I specialize in operational reporting, data storytelling, and cross-functional collaboration to drive performance and strategic alignment.
-  </p>
-</aside>
+    <aside class="left">
+      <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
+      <h1>Ritika Khurana</h1>
+      <p class="designation">IIBA | (CBDA®) Certified Business Data Analyst</p>
+      <p class="intro">
+        &emsp;I have over 5 years of experience transforming raw data into actionable insights that drive strategic decisions. I empower business teams to make confident, informed decisions by providing clear, data-backed visibility into where we stand and how to move forward effectively. Skilled in SQL, Snowflake, Power BI, and Excel, I specialize in operational reporting, data storytelling, and cross-functional collaboration to drive performance and strategic alignment.
+      </p>
 
-    <!-- MIDDLE CONTENT -->
-    <main class="middle">
-  <div class="section">
-  <h2>Projects</h2>
-  
-  <div class="project-card">
-    <h3>Customer Engagement Rate</h3>
-    <p>Built a Power BI dashboard to monitor churn risk using behavioral clustering across multiple business units.</p>
-  </div>
-  
-  <div class="project-card">
-    <h3>Hello Alberta Program</h3>
-    <p>Led data validation and performance reporting for a province-wide member engagement campaign.</p>
-  </div>
-  
-  <div class="project-card">
-    <h3>Work1 Project</h3>
-    <p>Developed and presented a comprehensive Power BI report for [insert purpose or audience]. The project involved data cleaning, creating DAX measures, and interactive visual storytelling.</p>
-    <p><strong>Tools:</strong> Power BI, Excel, SQL</p>
-    <!-- Embed the screenshot image right here -->
-    <img src="image/work1.PNG" alt="Screenshot of Work1 Project" style="width:100%; max-width:600px; border-radius:8px; margin-top:10px; box-shadow: 0 4px 10px rgba(33,150,243,0.2);" />
-  </div>
+      <div class="section">
+        <h2>Outside Work</h2>
+        <ul class="hobbies-list">
+          <li>🎶 Singing, especially Bethel Music</li>
+          <li>🎨 Cricut Crafter – creating personalized gifts, home décor, and DIY projects</li>
+          <li>🍳 Cooking – experimenting with new recipes and flavors</li>
+          <li>🖌️ Painting – exploring creativity through colors and canvas</li>
+        </ul>
+      </div>
+    </aside>
 
-</div>
+    <!-- RIGHT PANEL -->
+    <main class="right">
+      <div class="section">
+        <h2>Projects</h2>
 
+        <div class="project-card">
+          <h3>Customer Engagement Rate</h3>
+          <p>Built a Power BI dashboard to monitor churn risk using behavioral clustering across multiple business units.</p>
+        </div>
 
-</div>
+        <div class="project-card">
+          <h3>Hello Alberta Program</h3>
+          <p>Led data validation and performance reporting for a province-wide member engagement campaign.</p>
+        </div>
 
+        <div class="project-card">
+          <h3>Work1 Project</h3>
+          <p>Developed and presented a comprehensive Power BI report for [insert purpose or audience]. The project involved data cleaning, creating DAX measures, and interactive visual storytelling.</p>
+          <p><strong>Tools:</strong> Power BI, Excel, SQL</p>
+          <img src="image/work1.png" alt="Screenshot of Work1 Project" />
+        </div>
+      </div>
 
       <div class="section">
         <h2>Skills</h2>
@@ -311,150 +288,18 @@
           <small>2021 – 2023</small></p>
         <p>Led reporting automation, created KPIs for Membership & Roadside teams, and supported data migration planning.</p>
       </div>
-    </main>
-
-    <!-- RIGHT PANEL -->
-    <aside class="right">
-      <div class="section">
-        <h2>Outside Work</h2>
-        <ul class="hobbies-list">
-          
-          <li>🎶 Singing, especially Bethel Music</li>
-          <li>🎨 Cricut Crafter – creating personalized gifts, home décor, and DIY projects</li>
-          <li>🍳 Cooking – experimenting with new recipes and flavors</li>
-          <li>🖌️ Painting – exploring creativity through colors and canvas</li>
-        </ul>
-      </div>
 
       <div class="section">
         <h2>Contact</h2>
         <p>Email: <a href="mailto:ritika@example.com">ritika@example.com</a></p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/ritika-khurana-b62a34166/" target="_blank" rel="noopener noreferrer">View Profile</a></p>
       </div>
-    </aside>
+    </main>
   </div>
 
   <footer>
     © 2025 Ritika Khurana. All rights reserved.
   </footer>
-
-  <script>
-    const chartBackground = document.getElementById("chartBackground");
-    const svgNS = "http://www.w3.org/2000/svg";
-
-    // Colors for pastel charts
-    const pastelColors = [
-      "rgba(165, 216, 255, 0.7)",  // pastel blue line
-      "rgba(197, 246, 250, 0.5)",  // mint bars
-      "rgba(255, 214, 165, 0.5)",  // peach bars
-      "rgba(208, 191, 255, 0.5)",  // lavender bars
-      "rgba(255, 179, 186, 0.5)",  // pastel pink pie
-      "rgba(255, 223, 186, 0.5)",  // pastel orange pie
-      "rgba(255, 255, 186, 0.5)",  // pastel yellow pie
-      "rgba(186, 255, 201, 0.5)",  // pastel green pie
-    ];
-
-    function createLineChart() {
-      const svg = document.createElementNS(svgNS, "svg");
-      svg.classList.add("chart-shape");
-      svg.setAttribute("viewBox", "0 0 100 50");
-      svg.style.top = `${Math.random() * 90}%`;
-      svg.style.left = `${Math.random() * 90}%`;
-      svg.style.width = "150px";
-      svg.style.height = "80px";
-      svg.style.animationDelay = `${Math.random() * 5}s`;
-
-      const points = Array.from({ length: 6 }, (_, i) => `${i * 20},${10 + Math.random() * 30}`).join(" ");
-
-      const polyline = document.createElementNS(svgNS, "polyline");
-      polyline.setAttribute("points", points);
-      polyline.setAttribute("stroke", pastelColors[0]);
-      polyline.setAttribute("fill", "none");
-
-      svg.appendChild(polyline);
-      chartBackground.appendChild(svg);
-    }
-
-    function createBarChart() {
-      const svg = document.createElementNS(svgNS, "svg");
-      svg.classList.add("chart-shape");
-      svg.setAttribute("viewBox", "0 0 100 50");
-      svg.style.top = `${Math.random() * 90}%`;
-      svg.style.left = `${Math.random() * 90}%`;
-      svg.style.width = "150px";
-      svg.style.height = "80px";
-      svg.style.animationDelay = `${Math.random() * 5}s`;
-
-      for (let i = 0; i < 5; i++) {
-        const rect = document.createElementNS(svgNS, "rect");
-        rect.setAttribute("x", `${10 + i * 20}`);
-        rect.setAttribute("width", "12");
-        rect.setAttribute("y", `${10 + Math.random() * 25}`);
-        rect.setAttribute("height", `${20 + Math.random() * 15}`);
-        rect.setAttribute("fill", pastelColors[1 + (i % 3)]); // cycling mint, peach, lavender
-        svg.appendChild(rect);
-      }
-
-      chartBackground.appendChild(svg);
-    }
-
-    function createPieChart() {
-      const svg = document.createElementNS(svgNS, "svg");
-      svg.classList.add("chart-shape");
-      svg.setAttribute("viewBox", "0 0 100 100");
-      svg.style.top = `${Math.random() * 90}%`;
-      svg.style.left = `${Math.random() * 90}%`;
-      svg.style.width = "120px";
-      svg.style.height = "120px";
-      svg.style.animationDelay = `${Math.random() * 5}s`;
-
-      // Pie slices data (randomized)
-      const slices = [];
-      let total = 0;
-      for (let i = 0; i < 4; i++) {
-        const value = 20 + Math.random() * 30;
-        slices.push(value);
-        total += value;
-      }
-
-      let startAngle = 0;
-
-      for (let i = 0; i < slices.length; i++) {
-        const sliceAngle = (slices[i] / total) * 2 * Math.PI;
-        const x1 = 50 + 40 * Math.cos(startAngle);
-        const y1 = 50 + 40 * Math.sin(startAngle);
-        startAngle += sliceAngle;
-        const x2 = 50 + 40 * Math.cos(startAngle);
-        const y2 = 50 + 40 * Math.sin(startAngle);
-
-        const path = document.createElementNS(svgNS, "path");
-        const d = [
-          `M 50 50`,               // Move to center
-          `L ${x1.toFixed(2)} ${y1.toFixed(2)}`, // Line to start point on circle
-          `A 40 40 0 ${sliceAngle > Math.PI ? 1 : 0} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`, // Arc
-          `Z`                      // Close path back to center
-        ].join(" ");
-
-        path.setAttribute("d", d);
-        path.setAttribute("fill", pastelColors[4 + (i % 4)]);
-        svg.appendChild(path);
-      }
-
-      chartBackground.appendChild(svg);
-    }
-
-    function generateCharts() {
-      chartBackground.innerHTML = "";
-      for (let i = 0; i < 7; i++) {
-        createLineChart();
-        createBarChart();
-        createPieChart();
-      }
-    }
-
-    generateCharts();
-    setInterval(generateCharts, 10000);
-  </script>
 
 </body>
 </html>
