@@ -44,7 +44,6 @@
       font-size: 0.9rem;
     }
 
-    /* Chart Background */
     #chartBackground {
       position: fixed;
       top: 60px;
@@ -116,7 +115,7 @@
 
     h1 {
       font-size: 1.5rem;
-      margin-top: 10px;
+      margin: 0;
       color: #ffffff;
     }
 
@@ -140,10 +139,13 @@
     }
 
     .profile-pic {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
       object-fit: cover;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     .skills-list span {
@@ -156,6 +158,9 @@
       font-size: 0.95rem;
     }
 
+    .hobbies-list {
+      padding-left: 0;
+    }
     .hobbies-list li {
       list-style: none;
       margin-bottom: 8px;
@@ -197,9 +202,11 @@
   <!-- LEFT PANEL -->
   <aside class="left">
     <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
-     <h1><span style="color:#007bff;">Ritika Khurana</span></h1>
-   <p class="designation"><span style="color:#007bff;">IIBA | (CBDA®) Certified Business Data Analyst</span></p>
-  <p class="intro">
+    <div style="margin-top: 15px;">
+      <h1 style="margin-bottom: 0;"><span style="color:#007bff;">Ritika Khurana</span></h1>
+      <p class="designation" style="margin-top: 4px;"><span style="color:#007bff;">IIBA | (CBDA®) Certified Business Data Analyst</span></p>
+    </div>
+    <p class="intro">
       I have over 5 years of experience transforming raw data into actionable insights that drive strategic decisions. I empower business teams to make confident, informed decisions by providing clear, data-backed visibility into where we stand and how to move forward effectively. Skilled in SQL, Snowflake, Power BI, and Excel, I specialize in operational reporting, data storytelling, and cross-functional collaboration to drive performance and strategic alignment.
     </p>
   </aside>
@@ -209,18 +216,18 @@
     <div class="section">
       <h2>Projects</h2>
       <div class="project-card">
-        <h3>Customer Engagement Rate</h3>
+        <h3 style="color:#f472b6;">Customer Engagement Rate</h3>
         <p>Built a Power BI dashboard to monitor churn risk using behavioral clustering across multiple business units.</p>
       </div>
       <div class="project-card">
-        <h3>Hello Alberta Program</h3>
+        <h3 style="color:#34d399;">Hello Alberta Program</h3>
         <p>Led data validation and performance reporting for a province-wide member engagement campaign.</p>
       </div>
       <div class="project-card">
-        <h3>Work1 Project</h3>
-        <p>Developed and presented a comprehensive Power BI report for [insert purpose or audience]. The project involved data cleaning, creating DAX measures, and interactive visual storytelling.</p>
+        <h3 style="color:#facc15;">Work1 Project</h3>
+        <p>Developed and presented a comprehensive Power BI report for [insert purpose or audience]...</p>
         <p><strong>Tools:</strong> Power BI, Excel, SQL</p>
-        <p><strong>Screenshot:</strong> <a href="image/work1.png" target="_blank">View Image</a></p>
+        <img src="image/work1.png" alt="Work1 Screenshot" style="width: 100%; border-radius: 8px; margin-top: 10px;" />
       </div>
     </div>
 
@@ -241,11 +248,11 @@
       <h2>Experience</h2>
       <p><strong>Business Data Analyst</strong> — McKesson Canada<br />
       <small>Jun 2023 – Present</small></p>
-      <p>Work on cross-BU data initiatives, validate logic with SMEs, and deliver insights for strategic decisions.</p>
+      <p>Work on cross-BU data initiatives, validate logic with SMEs, and deliver insights...</p>
 
       <p><strong>Operations Analyst</strong> — AMA Alberta<br />
       <small>2021 – 2023</small></p>
-      <p>Led reporting automation, created KPIs for Membership & Roadside teams, and supported data migration planning.</p>
+      <p>Led reporting automation, created KPIs, and supported data migration planning.</p>
     </div>
   </main>
 
@@ -255,9 +262,9 @@
       <h2>Outside Work</h2>
       <ul class="hobbies-list">
         <li>🎶 Singing, especially Bethel Music</li>
-        <li>🎨 Cricut Crafter – creating personalized gifts, home décor, and DIY projects</li>
-        <li>🍳 Cooking – experimenting with new recipes and flavors</li>
-        <li>🖌️ Painting – exploring creativity through colors and canvas</li>
+        <li>🎨 Cricut Crafter – creating personalized gifts</li>
+        <li>🍳 Cooking – experimenting with new recipes</li>
+        <li>🖌️ Painting – exploring creativity</li>
       </ul>
     </div>
 
