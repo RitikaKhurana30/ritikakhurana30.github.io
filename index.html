@@ -6,221 +6,95 @@
   <title>Ritika Khurana | Portfolio</title>
   <style>
     /* Global styles */
-    * {
-      box-sizing: border-box;
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: #ffffff;
-      color: #333;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; background-color: #ffffff; color: #333; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; }
 
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background-color: #f8f9fa;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      z-index: 100;
-      color: #0d6efd;
-      font-weight: bold;
-      font-size: 1.2rem;
+      position: fixed; top: 0; left: 0; right: 0; height: 60px;
+      background-color: #f8f9fa; display: flex; align-items: center; padding: 0 20px;
+      z-index: 100; color: #0d6efd; font-weight: bold; font-size: 1.2rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #f8f9fa;
-      color: #6c757d;
-      font-size: 0.9rem;
+      text-align: center; padding: 20px; background-color: #f8f9fa; color: #6c757d; font-size: 0.9rem;
     }
 
     #chartBackground {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      width: 100vw;
-      height: calc(100vh - 60px);
-      pointer-events: none;
-      z-index: 0;
-      background: #ffffff;
-      overflow: visible;
+      position: fixed; top: 60px; left: 0; width: 100vw; height: calc(100vh - 60px);
+      pointer-events: none; z-index: 0; background: #ffffff; overflow: visible;
     }
 
-    .chart-shape {
-      position: absolute;
-      fill: none;
-      stroke-width: 2;
-      stroke-linejoin: round;
-      stroke-linecap: round;
-      animation: floatChart 10s ease-in-out infinite;
-    }
+    .chart-shape { position: absolute; fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; animation: floatChart 10s ease-in-out infinite; }
 
     @keyframes floatChart {
       0% { transform: translateY(0) scale(1); opacity: 0.3; }
       50% { transform: translateY(-15px) scale(1.05); opacity: 0.6; }
       100% { transform: translateY(0) scale(1); opacity: 0.3; }
     }
-	
 
+    @keyframes flipOnce { 0% { transform: scaleX(1); } 50% { transform: scaleX(-1); } 100% { transform: scaleX(1); } }
 
-    @keyframes flipOnce {
-      0% { transform: scaleX(1); }
-      50% { transform: scaleX(-1); }
-      100% { transform: scaleX(1); }
-    }
-	
-
-    .container {
-      display: flex;
-      padding-top: 80px;
-      position: relative;
-      z-index: 10;
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .left, .right {
-      width: 25%;
-    }
-
-    .middle {
-      width: 50%;
-    }
+    .container { display: flex; padding-top: 80px; position: relative; z-index: 10; gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .left, .right { width: 25%; } .middle { width: 50%; }
 
     aside, main {
-      background-color: #f1f3f5;
-      border-radius: 12px;
-      padding: 25px;
+      background-color: #f1f3f5; border-radius: 12px; padding: 25px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      animation: fadeInUp 1s ease forwards;
-      opacity: 0;
-      transform: translateY(20px);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      animation: fadeInUp 1s ease forwards; opacity: 0; transform: translateY(20px);
+      display: flex; flex-direction: column; gap: 20px;
     }
 
     aside.left { animation-delay: 0.2s; }
     main.middle { animation-delay: 0.4s; }
     aside.right { animation-delay: 0.6s; }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-    h1 {
-      font-size: 1.5rem;
-      margin: 0;
-      color: #000;
-    }
+    h1 { font-size: 1.5rem; margin: 0; color: #000; text-align: center; }
+    h2 { font-size: 1.3rem; color: #0d6efd; margin: 0 0 10px; border-left: 4px solid #0d6efd; padding-left: 10px; }
+    h3 { margin: 5px 0; color: #0d6efd; }
+    p { font-size: 1rem; line-height: 1.6; color: #333; }
 
-    h2 {
-      font-size: 1.3rem;
-      color: #0d6efd;
-      margin: 0 0 10px;
-      border-left: 4px solid #0d6efd;
-      padding-left: 10px;
-    }
-
-    h3 {
-      margin: 5px 0;
-      color: #003366; /* Uniform project title color */
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #333;
-    }
-	 .profile-pic {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto;
-      display: block;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .profile-pic {
+      width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
+      margin: 0 auto; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       animation: flipOnce 1.5s ease-in-out 0.2s 1;
     }
-	
-	
-	
 
+    .skills-list span { display: inline-block; background-color: #dee2e6; color: #0d6efd; padding: 5px 10px; margin: 5px; border-radius: 6px; font-size: 0.95rem; }
 
-    .skills-list span {
-      display: inline-block;
-      background-color: #dee2e6;
-      color: #0d6efd;
-      padding: 5px 10px;
-      margin: 5px;
-      border-radius: 6px;
-      font-size: 0.95rem;
-    }
+    .hobbies-list { padding-left: 0; } .hobbies-list li { list-style: none; margin-bottom: 8px; }
 
-    .hobbies-list {
-      padding-left: 0;
-    }
-    .hobbies-list li {
-      list-style: none;
-      margin-bottom: 8px;
-    }
-
-    a {
-      color: #0d6efd;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: #0d6efd; text-decoration: none; } a:hover { text-decoration: underline; }
 
     @media screen and (max-width: 900px) {
-      .container {
-        flex-direction: column;
-        padding: 80px 20px 20px;
-      }
-      .left, .middle, .right {
-        width: 100%;
-      }
-      header {
-        justify-content: center;
-      }
+      .container { flex-direction: column; padding: 80px 20px 20px; }
+      .left, .middle, .right { width: 100%; }
+      header { justify-content: center; }
     }
-	
-	/*SHAKY HAND START */
-	@keyframes shake {
-  0%, 100% { transform: rotate(0deg); }
-  20%, 60% { transform: rotate(-15deg); }
-  40%, 80% { transform: rotate(15deg); }
-}
 
-#hand-emoji {
-  animation: shake 1.5s infinite;
-  transform-origin: 70% 70%; /* pivot point for shaking */
-}
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      20%, 60% { transform: rotate(-15deg); }
+      40%, 80% { transform: rotate(15deg); }
+    }
 
-	/*SHAKY HAND END */
-	
-	
+    #hand-emoji { animation: shake 1.5s infinite; transform-origin: 70% 70%; }
+
+    /* Slideshow styling */
+    #slideshow { width: 100%; max-width: 600px; height: 400px; margin: 20px auto; overflow: hidden; border-radius: 12px; border: 2px solid #ccc; }
+    #slideshow img { width: 100%; height: 100%; display: none; border-radius: 8px; }
+    
+    /* Skill bars */
+    .skill { margin-bottom: 12px; }
+    .skill span { display: inline-block; width: 180px; font-weight: 500; }
+    .bar { display: inline-block; width: 60%; background: #eee; border-radius: 10px; overflow: hidden; vertical-align: middle; height: 20px; margin-left: 10px; }
+    .bar .fill { background: #0d6efd; height: 100%; color: #fff; font-size: 0.8rem; text-align: right; padding-right: 5px; line-height: 20px; border-radius: 10px; }
   </style>
 </head>
 
 <body>
-
 <header>
   <span id="hand-emoji" style="display: inline-block; cursor: default;">👋</span>
   <span style="margin-left: 10px;">Welcome to my portfolio!</span>
@@ -230,99 +104,54 @@
 
 <div class="container">
   <!-- LEFT PANEL -->
- 
-	<aside class="left">
-  <!-- Profile Photo -->
-  <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
-
-  <!-- Name and Designation -->
-  <div style="margin-top: 15px;">
-    <h1 style="text-align: center;">
-      <span style="color:#0d6efd;">Ritika Khurana</span>
-    </h1>
-    <p class="designation" style="color:#0d6efd; text-align: center;">
-      | IIBA - CBDA® | <br>
-      Certified Business Data Analyst<br> 
-      PG in Data Analytics for Business
-    </p>
-  </div>
-
-  <!-- Intro Typing Text -->
-  <p id="typing-intro" class="intro" style="text-align: center; margin-top: 15px;"></p>
+  <aside class="left">
+    <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
+    <div style="margin-top: 15px;">
+      <h1>Ritika Khurana</h1>
+      <p class="designation" style="color:#0d6efd; text-align: center;">
+        | IIBA - CBDA® | <br>
+        Certified Business Data Analyst<br> 
+        PG in Data Analytics for Business
+      </p>
+    </div>
+    <p id="typing-intro" class="intro" style="text-align: center; margin-top: 15px;"></p>
 
 
-</aside>
 
-	
+
+
+  </aside>
+
   <!-- MIDDLE CONTENT -->
   <main class="middle">
-   
-	  <!-- New Section: Who I Am at Work -->
-  <div class="section" style="margin-top: 30px;">
-    <h2 style="color:#0d6efd;">Who I Am at Work 🦎</h2>
-    <p style="color:#555; line-height:1.5;">
-          I’m a <strong>data chameleon</strong>—sometimes digging into numbers as a Data Analyst, 
-		other days I’m a Business Analyst connecting the dots between the business and the technical requirements.
-		I explore BI dashboards, design data models, and build quick ad-hoc solutions whenever the team needs a helping hand.
-	</p>
-  </div>  
-	  
-	  
-	  <div class="section">
-
-
-
-		
-      <h2>Projects</h2>
-      <div class="project-card">
-        <h3>Automatic Annual Return Program</h3>
-        <p>Built a Power BI dashboard to monitor churn risk using behavioral clustering across multiple business units.</p>
-      </div>
-      <div class="project-card">
-        <h3>Hello Alberta Program</h3>
-        <p>Led data validation and performance reporting for a province-wide member engagement campaign.</p>
-      </div>
-      <div class="project-card">
-        <h3>Work1 Project</h3>
-        <p>Developed and presented a comprehensive Power BI report for [insert purpose or audience]...</p>
-        <p><strong>Tools:</strong> Power BI, Excel, SQL</p>
-        <img src="image/work1.PNG" alt="Work1 Screenshot" style="width: 100%; border-radius: 8px; margin-top: 10px;" />
-      </div>
-    </div>
-	
-
-
-    <div class="section">
-      <h2>Skills</h2>
-      <div class="skills-list">
-        <span>SQL</span>
-        <span>Snowflake</span>
-        <span>Power BI</span>
-        <span>Excel</span>
-        <span>Python (Basic)</span>
-        <span>Data Storytelling</span>
-        <span>Stakeholder Engagement</span>
-      </div>
+    <div class="section" style="margin-top: 30px;">
+      <h2>Who I Am at Work 🦎</h2>
+      <p style="color:#555; line-height:1.5;">
+        I’m a <strong>data chameleon</strong>—sometimes digging into numbers as a Data Analyst, 
+        other days I’m a Business Analyst connecting the dots between the business and the technical requirements.
+        I explore BI dashboards, design data models, and build quick ad-hoc solutions whenever the team needs a helping hand.
+      </p>
     </div>
 
     <div class="section">
-      <h2>Experience</h2>
-      <p><strong>Business Data Analyst</strong> — Alberta Motor Association<br />
-      <p><small>May 2022 – Present</small></p>
-<ul>
-  <li>Design wireframes and storyboards for reporting requirements and insights</li>
-  <li>Write and optimize SQL scripts for ad hoc and routine data pulls</li>
-  <li>Generate and validate ad hoc reports supporting cross-team decisions</li>
-  <li>Develop and maintain dashboards and board-level reports on KPIs</li>
-  <li>Lead and contribute to data analysis, reporting automation, and process improvement projects</li>
-  <li>Facilitate ideation and brainstorming to enhance data strategies and solve business challenges</li>
-  <li>Collaborate with teams to translate data into actionable recommendations</li>
-</ul>
-
-      <p><strong>Data Analyst</strong> — Reliance Industries Limited<br />
-      <small>Jun 2018 – Mar 2020</small></p>
-      <p>ng.</p>
+      
+         <div class="section" style="margin-top: 30px;">
+	<h2>Projects Snapshot</h2>
+      </div>
     </div>
+
+    <!-- Slideshow Section -->
+    <div id="slideshow">
+      <img src="image/work2a.PNG" alt="Work1 Screenshot" />
+      <img src="image/work1.PNG" alt="Work2 Screenshot" />
+      <img src="image/work5.PNG" alt="Work3 Screenshot" />
+     <img src="image/work3.PNG" alt="Work3 Screenshot" />
+     <img src="image/work4.PNG" alt="Work3 Screenshot" />
+    </div>
+
+
+
+
 	<div class="section">
   <h2>Skills & Proficiency</h2>
 
@@ -333,112 +162,63 @@
   </div>
   <div class="skill">
     <span>Tableau</span>
-    <div class="bar"><div class="fill" style="width:75%;">75%</div></div>
+    <div class="bar"><div class="fill" style="width:85%;">85%</div></div>
   </div>
-  <div class="skill">
-    <span>IBM Cognos Analytics</span>
-    <div class="bar"><div class="fill" style="width:80%;">80%</div></div>
-  </div>
+
   <div class="skill">
     <span>MS Excel</span>
-    <div class="bar"><div class="fill" style="width:85%;">85%</div></div>
+    <div class="bar"><div class="fill" style="width:90%;">90%</div></div>
   </div>
 
   <h3>Data Manipulation</h3>
-  <div class="skill">
-    <span>Power Query</span>
-    <div class="bar"><div class="fill" style="width:75%;">75%</div></div>
-  </div>
+	<div class="skill">
+    		<span>Snowflake</span>
+    		<div class="bar"><div class="fill" style="width:90%;">90%</div></div>
+  	</div>
+	<div class="skill">
+    		<span>SQL</span>
+    		<div class="bar"><div class="fill" style="width:95%;">95%</div></div>
+  	</div>
+  	<div class="skill">
+    		<span>Power Query</span>
+    		<div class="bar"><div class="fill" style="width:85%;">85%</div></div>
+  	</div>
   <div class="skill">
     <span>Python</span>
-    <div class="bar"><div class="fill" style="width:80%;">80%</div></div>
+    <div class="bar"><div class="fill" style="width:70%;">70%</div></div>
   </div>
-  <div class="skill">
-    <span>SQL</span>
-    <div class="bar"><div class="fill" style="width:85%;">85%</div></div>
-  </div>
+
   <div class="skill">
     <span>ETL</span>
-    <div class="bar"><div class="fill" style="width:85%;">85%</div></div>
+    <div class="bar"><div class="fill" style="width:75%;">75%</div></div>
   </div>
   <div class="skill">
     <span>DAX</span>
-    <div class="bar"><div class="fill" style="width:75%;">75%</div></div>
+    <div class="bar"><div class="fill" style="width:85%;">85%</div></div>
+  </div>
+
+  <h3>Documentation & Storyboarding</h3>
+  <div class="skill">
+    <span>Confluence</span>
+    <div class="bar"><div class="fill" style="width:90%;">90%</div></div>
   </div>
   <div class="skill">
-    <span>VBA</span>
-    <div class="bar"><div class="fill" style="width:70%;">70%</div></div>
+    <span>Lucid</span>
+    <div class="bar"><div class="fill" style="width:90%;">90%</div></div>
   </div>
-</div>   /*adding here */
-<!-- Slideshow Section -->
-<div id="slideshow" style="width:600px; height:400px; margin:auto; overflow:hidden; border:2px solid #ccc;">
-  <img src="image/work1.PNG" alt="Work1 Screenshot" style="width: 100%; border-radius: 8px; margin-top: 10px;" />
-  <img src="image2.jpg" alt="Project 2" style="width:100%; height:100%; display:none;">
-  <img src="image3.jpg" alt="Project 3" style="width:100%; height:100%; display:none;">
-</div>
+	<div class="skill">
+    <span>Miro Board</span>
+    <div class="bar"><div class="fill" style="width:90%;">90%</div></div>
+  </div>
 
-<script>
-  const images = document.querySelectorAll('#slideshow img');
-  let current = 0;
 
-  function showNextImage() {
-    images[current].style.display = 'none';
-    current = (current + 1) % images.length;
-    images[current].style.display = 'block';
-  }
+  
+</div>  
 
-  // Show the first image initially
-  images[current].style.display = 'block';
-
-  // Change image every 5 seconds
-  setInterval(showNextImage, 5000);
-</script>
-
-/*stoping here*/
-
-	  
-<style>
-  .skill {
-    margin-bottom: 12px;
-  }
-
-  .skill span {
-    display: inline-block;
-    width: 180px;
-    font-weight: 500;
-  }
-
-  .bar {
-    display: inline-block;
-    width: 60%;
-    background: #eee;
-    border-radius: 10px;
-    overflow: hidden;
-    vertical-align: middle;
-    height: 20px;
-    margin-left: 10px;
-  }
-
-  .bar .fill {
-    background: #0d6efd; /* blue fill */
-    height: 100%;
-    color: #fff;
-    font-size: 0.8rem;
-    text-align: right;
-    padding-right: 5px;
-    line-height: 20px;
-    border-radius: 10px;
-  }
-
-  h3 {
-    margin-top: 15px;
-    margin-bottom: 8px;
-    color: #0d6efd;
-  }
-</style>
-
-	
-	
+    <div class="section">
+   
+     
+    </div>
   </main>
 
   <!-- RIGHT PANEL -->
@@ -448,21 +228,14 @@
       <ul class="hobbies-list">
         <li>🎨 Cricut Crafter – Enjoy designing and creating personalized crafts, home décor</li>
         <li>🍳 Love exploring global flavors and trying out new recipes</li>
-        <li>🖌️ Painting: Passionate about experimenting with diverse techniques and styles. </li>
+        <li>🖌️ Painting: Passionate about experimenting with diverse techniques and styles.</li>
       </ul>
     </div>
-
-<section class="section education">
-    <h2>Education</h2>
-    
-
-    <p><strong>Postgraduate Certificate in Business Data Analytics</strong> — Zekelman School of Business - St Clair College <br />
-      <small>2022</small></p>
-	  
-	<p><strong>Bachelor of Engineering - ECE</strong> — National Istitute of Engineering (NIT-Jalandhar) <br />
-      <small>2018</small></p>
-  </section>
-
+    <section class="section education">
+      <h2>Education</h2>
+      <p><strong>Postgraduate Certificate in Business Data Analytics</strong> — Zekelman School of Business - St Clair College <br /><small>2022</small></p>
+      <p><strong>Bachelor of Engineering - ECE</strong> — National Institute of Engineering (NIT-Jalandhar) <br /><small>2018</small></p>
+    </section>
     <div class="section">
       <h2>Contact</h2>
       <p>Email: <a href="mailto:kh.ritika30@gmail.com">kh.ritika30@gmail.com</a></p>
@@ -471,21 +244,36 @@
   </aside>
 </div>
 
-<footer>
-  © 2025 Ritika Khurana. All rights reserved.
-</footer>
+<footer>© 2025 Ritika Khurana. All rights reserved.</footer>
 
-<!-- Floating Chart Script (light theme colors) -->
+<!-- Scripts -->
 <script>
+  // Slideshow logic
+  const images = document.querySelectorAll('#slideshow img');
+  let current = 0;
+  images[current].style.display = 'block';
+  setInterval(() => {
+    images[current].style.display = 'none';
+    current = (current + 1) % images.length;
+    images[current].style.display = 'block';
+  }, 5000);
+
+  // Typing intro
+  const introText = `I'm a data analyst who thrives on uncovering stories hidden in numbers. With a mix of curiosity, SQL, and dashboards, I turn raw data into actionable insights that drive business strategy.`;
+  let index = 0;
+  function typeWriter() {
+    if(index < introText.length){
+      document.getElementById("typing-intro").innerHTML += introText.charAt(index);
+      index++;
+      setTimeout(typeWriter, 50);
+    }
+  }
+  window.onload = typeWriter;
+
+  // Floating chart background
   const chartBackground = document.getElementById("chartBackground");
   const svgNS = "http://www.w3.org/2000/svg";
-  const pastelColors = [
-    "rgba(0, 123, 255, 0.15)",
-    "rgba(108, 117, 125, 0.15)",
-    "rgba(13, 110, 253, 0.1)",
-    "rgba(0, 0, 0, 0.05)"
-  ];
-
+  const pastelColors = ["rgba(0, 123, 255, 0.15)","rgba(108, 117, 125, 0.15)","rgba(13, 110, 253, 0.1)","rgba(0,0,0,0.05)"];
   function createLineChart() {
     const svg = document.createElementNS(svgNS, "svg");
     svg.classList.add("chart-shape");
@@ -495,117 +283,17 @@
     svg.style.width = "150px";
     svg.style.height = "80px";
     svg.style.animationDelay = `${Math.random() * 5}s`;
-
-    const points = Array.from({ length: 6 }, (_, i) => `${i * 20},${10 + Math.random() * 30}`).join(" ");
+    const points = Array.from({ length: 6 }, (_, i) => `${i*20},${10+Math.random()*30}`).join(" ");
     const polyline = document.createElementNS(svgNS, "polyline");
     polyline.setAttribute("points", points);
     polyline.setAttribute("stroke", pastelColors[0]);
     polyline.setAttribute("fill", "none");
-
     svg.appendChild(polyline);
     chartBackground.appendChild(svg);
   }
-
-  function createBarChart() {
-    const svg = document.createElementNS(svgNS, "svg");
-    svg.classList.add("chart-shape");
-    svg.setAttribute("viewBox", "0 0 100 50");
-    svg.style.top = `${Math.random() * 90}%`;
-    svg.style.left = `${Math.random() * 90}%`;
-    svg.style.width = "150px";
-    svg.style.height = "80px";
-    svg.style.animationDelay = `${Math.random() * 5}s`;
-
-    for (let i = 0; i < 5; i++) {
-      const rect = document.createElementNS(svgNS, "rect");
-      rect.setAttribute("x", `${10 + i * 20}`);
-      rect.setAttribute("width", "12");
-      rect.setAttribute("y", `${10 + Math.random() * 25}`);
-      rect.setAttribute("height", `${20 + Math.random() * 15}`);
-      rect.setAttribute("fill", pastelColors[1 + (i % 2)]);
-      svg.appendChild(rect);
-    }
-
-    chartBackground.appendChild(svg);
-  }
-
-  function createPieChart() {
-    const svg = document.createElementNS(svgNS, "svg");
-    svg.classList.add("chart-shape");
-    svg.setAttribute("viewBox", "0 0 100 100");
-    svg.style.top = `${Math.random() * 90}%`;
-    svg.style.left = `${Math.random() * 90}%`;
-    svg.style.width = "120px";
-    svg.style.height = "120px";
-    svg.style.animationDelay = `${Math.random() * 5}s`;
-
-    const slices = [];
-    let total = 0;
-    for (let i = 0; i < 4; i++) {
-      const value = 20 + Math.random() * 30;
-      slices.push(value);
-      total += value;
-    }
-
-    let startAngle = 0;
-    for (let i = 0; i < slices.length; i++) {
-      const sliceAngle = (slices[i] / total) * 2 * Math.PI;
-      const x1 = 50 + 40 * Math.cos(startAngle);
-      const y1 = 50 + 40 * Math.sin(startAngle);
-      startAngle += sliceAngle;
-      const x2 = 50 + 40 * Math.cos(startAngle);
-      const y2 = 50 + 40 * Math.sin(startAngle);
-
-      const path = document.createElementNS(svgNS, "path");
-      const d = [
-        `M 50 50`,
-        `L ${x1.toFixed(2)} ${y1.toFixed(2)}`,
-        `A 40 40 0 ${sliceAngle > Math.PI ? 1 : 0} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`,
-        `Z`
-      ].join(" ");
-      path.setAttribute("d", d);
-      path.setAttribute("fill", pastelColors[2 + (i % 2)]);
-      svg.appendChild(path);
-    }
-
-    chartBackground.appendChild(svg);
-  }
-
-  function generateCharts() {
-    chartBackground.innerHTML = "";
-    for (let i = 0; i < 6; i++) {
-      createLineChart();
-      createBarChart();
-      createPieChart();
-    }
-  }
-  
-/*new piece start*/
-  const introText = `I'm a data analyst who thrives on uncovering stories hidden in numbers. With a mix of curiosity, SQL, and dashboards, I turn raw data into actionable insights that drive business strategy. Whether it's cleaning messy datasets or building sleek visualizations, I love making data make sense.`;
-
-  let index = 0;
-  const speed = 50; // typing speed in ms
-
-  function typeWriter() {
-    if (index < introText.length) {
-      document.getElementById("typing-intro").innerHTML += introText.charAt(index);
-      index++;
-      setTimeout(typeWriter, speed);
-    }
-  }
-
-  window.onload = typeWriter; /*new piece end*/
-
-
-
+  function generateCharts() { chartBackground.innerHTML = ""; for(let i=0;i<6;i++){ createLineChart(); } }
   generateCharts();
   setInterval(generateCharts, 10000);
 </script>
-
 </body>
 </html>
-
-
-/*1. Extracted and validated large datasets from Snowflake, Excel, and other BI tools to support business reporting and insights.
-2. Analyzed membership trends, rewards program usage,    retention patterns using statistical techniques such as clustering, correlation analysis, forecasting, and trend analysis, supported by data visualization tools like Power BI and Excel. 
-3. Led end-to-end analytical projects including Annual Return Auto-Renewal, Vehicle Registration Auto-Renewal, Hello Alberta Program for Newcomers, Community Membership Analysis, and the Rewards Rollout Project across all Canadian CAA Clubs.*/
