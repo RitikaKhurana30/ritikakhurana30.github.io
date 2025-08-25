@@ -13,8 +13,8 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: #0d1117;
-      color: #e5e7eb;
+      background-color: #ffffff;
+      color: #333;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
     }
@@ -25,22 +25,22 @@
       left: 0;
       right: 0;
       height: 60px;
-      background-color: #161b22;
+      background-color: #f8f9fa;
       display: flex;
       align-items: center;
       padding: 0 20px;
       z-index: 100;
-      color: #58a6ff;
+      color: #0d6efd;
       font-weight: bold;
       font-size: 1.2rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background-color: #161b22;
-      color: #8b949e;
+      background-color: #f8f9fa;
+      color: #6c757d;
       font-size: 0.9rem;
     }
 
@@ -52,7 +52,7 @@
       height: calc(100vh - 60px);
       pointer-events: none;
       z-index: 0;
-      background: #0d1117;
+      background: #ffffff;
       overflow: visible;
     }
 
@@ -66,10 +66,19 @@
     }
 
     @keyframes floatChart {
-      0% { transform: translateY(0) scale(1); opacity: 0.4; }
-      50% { transform: translateY(-15px) scale(1.05); opacity: 1; }
-      100% { transform: translateY(0) scale(1); opacity: 0.4; }
+      0% { transform: translateY(0) scale(1); opacity: 0.3; }
+      50% { transform: translateY(-15px) scale(1.05); opacity: 0.6; }
+      100% { transform: translateY(0) scale(1); opacity: 0.3; }
     }
+	
+
+
+    @keyframes flipOnce {
+      0% { transform: scaleX(1); }
+      50% { transform: scaleX(-1); }
+      100% { transform: scaleX(1); }
+    }
+	
 
     .container {
       display: flex;
@@ -90,10 +99,10 @@
     }
 
     aside, main {
-      background-color: #161b22;
+      background-color: #f1f3f5;
       border-radius: 12px;
       padding: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       animation: fadeInUp 1s ease forwards;
       opacity: 0;
       transform: translateY(20px);
@@ -116,54 +125,46 @@
     h1 {
       font-size: 1.5rem;
       margin: 0;
-      color: #ffffff;
+      color: #000;
     }
 
     h2 {
       font-size: 1.3rem;
-      color: #58a6ff;
+      color: #0d6efd;
       margin: 0 0 10px;
-      border-left: 4px solid #58a6ff;
+      border-left: 4px solid #0d6efd;
       padding-left: 10px;
     }
 
     h3 {
       margin: 5px 0;
-      color: #e5e7eb;
+      color: #003366; /* Uniform project title color */
     }
 
     p {
       font-size: 1rem;
       line-height: 1.6;
-      color: #c9d1d9;
+      color: #333;
     }
-/*
-    .profile-pic {
+	 .profile-pic {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
       margin: 0 auto;
       display: block;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transform: scaleX(-1);  -- this is what I have added for the flip*/
-
-      .profile-pic {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto;
-  display: block;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transform: scaleX(-1);            /* Main flip */
-  -webkit-transform: scaleX(-1);    /* Safari compatibility */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: flipOnce 1.5s ease-in-out 0.2s 1;
     }
+	
+	
+	
+
 
     .skills-list span {
       display: inline-block;
-      background-color: #21262d;
-      color: #58a6ff;
+      background-color: #dee2e6;
+      color: #0d6efd;
       padding: 5px 10px;
       margin: 5px;
       border-radius: 6px;
@@ -179,7 +180,7 @@
     }
 
     a {
-      color: #58a6ff;
+      color: #0d6efd;
       text-decoration: none;
     }
 
@@ -199,13 +200,30 @@
         justify-content: center;
       }
     }
+	
+	/*SHAKY HAND START */
+	@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  20%, 60% { transform: rotate(-15deg); }
+  40%, 80% { transform: rotate(15deg); }
+}
+
+#hand-emoji {
+  animation: shake 1.5s infinite;
+  transform-origin: 70% 70%; /* pivot point for shaking */
+}
+
+	/*SHAKY HAND END */
+	
+	
   </style>
 </head>
 
 <body>
 
 <header>
-  Ritika Khurana | Business Data Analyst
+  <span id="hand-emoji" style="display: inline-block; cursor: default;">👋</span>
+  <span style="margin-left: 10px;">Welcome to my portfolio!</span>
 </header>
 
 <div id="chartBackground"></div>
@@ -215,33 +233,43 @@
   <aside class="left">
     <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
     <div style="margin-top: 15px;">
-      <h1 style="margin-bottom: 0;"><span style="color:#007bff;">Ritika Khurana</span></h1>
-      <p class="designation" style="margin-top: 4px;"><span style="color:#007bff;">IIBA | (CBDA®) Certified Business Data Analyst</span></p>
+     <h1 style="text-align: center;">
+  <span style="color:#0d6efd;">Ritika Khurana</span>
+</h1>
+      <p class="designation" style="color:#0d6efd; text-align: center;"> | IIBA - CBDA® | <br>
+	  Certified Business Data Analyst<br> 
+	  PG in Data Analytics for Business </span></p>
     </div>
-    <p class="intro">
-      I have over 5 years of experience transforming raw data into actionable insights that drive strategic decisions. I empower business teams to make confident, informed decisions by providing clear, data-backed visibility into where we stand and how to move forward effectively. Skilled in SQL, Snowflake, Power BI, and Excel, I specialize in operational reporting, data storytelling, and cross-functional collaboration to drive performance and strategic alignment.
+	
+<p id="typing-intro" class="intro" style="text-align: center;"></p>
     </p>
+	
+	
+	
   </aside>
 
   <!-- MIDDLE CONTENT -->
   <main class="middle">
     <div class="section">
+	
       <h2>Projects</h2>
       <div class="project-card">
-        <h3 style="color:#f472b6;">Customer Engagement Rate</h3>
+        <h3>Automatic Annual Return Program</h3>
         <p>Built a Power BI dashboard to monitor churn risk using behavioral clustering across multiple business units.</p>
       </div>
       <div class="project-card">
-        <h3 style="color:#34d399;">Hello Alberta Program</h3>
+        <h3>Hello Alberta Program</h3>
         <p>Led data validation and performance reporting for a province-wide member engagement campaign.</p>
       </div>
       <div class="project-card">
-        <h3 style="color:#facc15;">Work1 Project</h3>
+        <h3>Work1 Project</h3>
         <p>Developed and presented a comprehensive Power BI report for [insert purpose or audience]...</p>
         <p><strong>Tools:</strong> Power BI, Excel, SQL</p>
         <img src="image/work1.PNG" alt="Work1 Screenshot" style="width: 100%; border-radius: 8px; margin-top: 10px;" />
       </div>
     </div>
+	
+
 
     <div class="section">
       <h2>Skills</h2>
@@ -258,14 +286,25 @@
 
     <div class="section">
       <h2>Experience</h2>
-      <p><strong>Business Data Analyst</strong> — McKesson Canada<br />
-      <small>Jun 2023 – Present</small></p>
-      <p>Work on cross-BU data initiatives, validate logic with SMEs, and deliver insights...</p>
+      <p><strong>Business Data Analyst</strong> — Alberta Motor Association<br />
+      <p><small>May 2022 – Present</small></p>
+<ul>
+  <li>Design wireframes and storyboards for reporting requirements and insights</li>
+  <li>Write and optimize SQL scripts for ad hoc and routine data pulls</li>
+  <li>Generate and validate ad hoc reports supporting cross-team decisions</li>
+  <li>Develop and maintain dashboards and board-level reports on KPIs</li>
+  <li>Lead and contribute to data analysis, reporting automation, and process improvement projects</li>
+  <li>Facilitate ideation and brainstorming to enhance data strategies and solve business challenges</li>
+  <li>Collaborate with teams to translate data into actionable recommendations</li>
+</ul>
 
-      <p><strong>Operations Analyst</strong> — AMA Alberta<br />
-      <small>2021 – 2023</small></p>
-      <p>Led reporting automation, created KPIs, and supported data migration planning.</p>
+      <p><strong>Data Analyst</strong> — Reliance Industries Limited<br />
+      <small>Jun 2018 – Mar 2020</small></p>
+      <p>ng.</p>
     </div>
+	
+	
+	
   </main>
 
   <!-- RIGHT PANEL -->
@@ -273,12 +312,22 @@
     <div class="section">
       <h2>Outside Work</h2>
       <ul class="hobbies-list">
-        <li>🎶 Singing, especially Bethel Music</li>
-        <li>🎨 Cricut Crafter – creating personalized gifts</li>
-        <li>🍳 Cooking – experimenting with new recipes</li>
-        <li>🖌️ Painting – exploring creativity</li>
+        <li>🎨 Cricut Crafter – Enjoy designing and creating personalized crafts, home décor</li>
+        <li>🍳 Love exploring global flavors and trying out new recipes</li>
+        <li>🖌️ Painting: Passionate about experimenting with diverse techniques and styles. </li>
       </ul>
     </div>
+
+<section class="section education">
+    <h2>Education</h2>
+    
+
+    <p><strong>Postgraduate Certificate in Business Data Analytics</strong> — Zekelman School of Business - St Clair College <br />
+      <small>2022</small></p>
+	  
+	<p><strong>Bachelor of Engineering - ECE</strong> — National Istitute of Engineering (NIT-Jalandhar) <br />
+      <small>2018</small></p>
+  </section>
 
     <div class="section">
       <h2>Contact</h2>
@@ -292,19 +341,15 @@
   © 2025 Ritika Khurana. All rights reserved.
 </footer>
 
-<!-- Chart Animation Script -->
+<!-- Floating Chart Script (light theme colors) -->
 <script>
   const chartBackground = document.getElementById("chartBackground");
   const svgNS = "http://www.w3.org/2000/svg";
   const pastelColors = [
-    "rgba(165, 216, 255, 0.7)",
-    "rgba(197, 246, 250, 0.5)",
-    "rgba(255, 214, 165, 0.5)",
-    "rgba(208, 191, 255, 0.5)",
-    "rgba(255, 179, 186, 0.5)",
-    "rgba(255, 223, 186, 0.5)",
-    "rgba(255, 255, 186, 0.5)",
-    "rgba(186, 255, 201, 0.5)"
+    "rgba(0, 123, 255, 0.15)",
+    "rgba(108, 117, 125, 0.15)",
+    "rgba(13, 110, 253, 0.1)",
+    "rgba(0, 0, 0, 0.05)"
   ];
 
   function createLineChart() {
@@ -343,7 +388,7 @@
       rect.setAttribute("width", "12");
       rect.setAttribute("y", `${10 + Math.random() * 25}`);
       rect.setAttribute("height", `${20 + Math.random() * 15}`);
-      rect.setAttribute("fill", pastelColors[1 + (i % 3)]);
+      rect.setAttribute("fill", pastelColors[1 + (i % 2)]);
       svg.appendChild(rect);
     }
 
@@ -385,7 +430,7 @@
         `Z`
       ].join(" ");
       path.setAttribute("d", d);
-      path.setAttribute("fill", pastelColors[4 + (i % 4)]);
+      path.setAttribute("fill", pastelColors[2 + (i % 2)]);
       svg.appendChild(path);
     }
 
@@ -394,12 +439,30 @@
 
   function generateCharts() {
     chartBackground.innerHTML = "";
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
       createLineChart();
       createBarChart();
       createPieChart();
     }
   }
+  
+/*new piece start*/
+  const introText = `I'm a data analyst who thrives on uncovering stories hidden in numbers. With a mix of curiosity, SQL, and dashboards, I turn raw data into actionable insights that drive business strategy. Whether it's cleaning messy datasets or building sleek visualizations, I love making data make sense.`;
+
+  let index = 0;
+  const speed = 50; // typing speed in ms
+
+  function typeWriter() {
+    if (index < introText.length) {
+      document.getElementById("typing-intro").innerHTML += introText.charAt(index);
+      index++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  window.onload = typeWriter; /*new piece end*/
+
+
 
   generateCharts();
   setInterval(generateCharts, 10000);
@@ -407,3 +470,8 @@
 
 </body>
 </html>
+
+
+/*1. Extracted and validated large datasets from Snowflake, Excel, and other BI tools to support business reporting and insights.
+2. Analyzed membership trends, rewards program usage,    retention patterns using statistical techniques such as clustering, correlation analysis, forecasting, and trend analysis, supported by data visualization tools like Power BI and Excel. 
+3. Led end-to-end analytical projects including Annual Return Auto-Renewal, Vehicle Registration Auto-Renewal, Hello Alberta Program for Newcomers, Community Membership Analysis, and the Rewards Rollout Project across all Canadian CAA Clubs.*/
