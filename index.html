@@ -3,296 +3,505 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ritika Khurana | Portfolio</title>
+  <title>Ritika Khurana | Business Data & BI Analyst</title>
+  <meta name="description" content="Ritika Khurana, CBDA® – Business Data Intelligence Analyst with 5+ years in SQL, Snowflake, Power BI, Hex and dbt. Edmonton / Beaumont, AB." />
   <style>
-    /* Global styles */
+    :root {
+      --primary: #0d6efd;
+      --primary-dark: #0a4fb8;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --bg: #ffffff;
+      --soft: #f4f7fb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --radius: 14px;
+      --shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+    }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; height: 100%; background-color: #ffffff; color: #333; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
 
-    header {
-      position: fixed; top: 0; left: 0; right: 0; height: 60px;
-      background-color: #f8f9fa; display: flex; align-items: center; padding: 0 20px;
-      z-index: 100; color: #0d6efd; font-weight: bold; font-size: 1.2rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    /* Nav */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; }
+    .brand { font-weight: 700; color: var(--ink); font-size: 1.1rem; }
+    .brand span { color: var(--primary); }
+    .nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+    .nav ul a { color: var(--ink); font-weight: 500; font-size: 0.95rem; }
+    .nav ul a:hover { color: var(--primary); text-decoration: none; }
+
+    /* Background charts (kept from original, toned down) */
+    #chartBackground { position: fixed; inset: 0; pointer-events: none; z-index: -1; }
+    .chart-shape { position: absolute; animation: floatChart 10s ease-in-out infinite; }
+    @keyframes floatChart { 0%,100% { transform: translateY(0); opacity: .25; } 50% { transform: translateY(-15px); opacity: .5; } }
+
+    section { padding: 70px 20px; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    .alt { background: var(--soft); }
+    h2.title { font-size: 1.9rem; margin: 0 0 8px; }
+    .subtitle { color: var(--muted); margin: 0 0 36px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: all .7s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+
+    /* Hero */
+    .hero { padding: 80px 20px 60px; }
+    .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 50px; align-items: center; }
+    .eyebrow { display: inline-block; background: #e7f0ff; color: var(--primary); font-weight: 600; font-size: .85rem; padding: 6px 12px; border-radius: 999px; }
+    .hero h1 { font-size: 2.8rem; line-height: 1.15; margin: 16px 0 10px; }
+    .hero h1 .hl { color: var(--primary); }
+    .hero .role { font-size: 1.2rem; color: var(--muted); margin: 0 0 18px; min-height: 1.6em; }
+    .hero .role b { color: var(--ink); }
+    .cursor { display: inline-block; width: 2px; background: var(--primary); animation: blink 1s infinite; margin-left: 2px; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero p.lead { font-size: 1.05rem; max-width: 560px; }
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .btn { padding: 12px 22px; border-radius: 10px; font-weight: 600; border: 2px solid var(--primary); transition: .2s; }
+    .btn.solid { background: var(--primary); color: #fff; }
+    .btn.solid:hover { background: var(--primary-dark); border-color: var(--primary-dark); text-decoration: none; }
+    .btn.ghost { color: var(--primary); }
+    .btn.ghost:hover { background: #e7f0ff; text-decoration: none; }
+    .photo-card { position: relative; justify-self: center; }
+    .photo-card img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 6px solid #fff; box-shadow: var(--shadow); }
+    .badge { position: absolute; background: #fff; border-radius: 12px; padding: 10px 14px; box-shadow: var(--shadow); font-size: .85rem; font-weight: 600; }
+    .badge small { display: block; color: var(--muted); font-weight: 500; }
+    .badge.b1 { top: 10px; left: -30px; }
+    .badge.b2 { bottom: 20px; right: -30px; }
+
+    /* Stats */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 50px; }
+    .stat { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: var(--shadow); }
+    .stat .num { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .stat .lbl { color: var(--muted); font-size: .9rem; }
+
+    /* What I do */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); transition: transform .2s; }
+    .card:hover { transform: translateY(-4px); }
+    .card .icon { font-size: 1.8rem; }
+    .card h3 { margin: 10px 0 8px; font-size: 1.15rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    /* Experience timeline */
+    .timeline { position: relative; padding-left: 28px; border-left: 3px solid #d6e4ff; }
+    .job { position: relative; margin-bottom: 36px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+    .job::before { content: ""; position: absolute; left: -38px; top: 28px; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); border: 3px solid #fff; box-shadow: 0 0 0 3px #d6e4ff; }
+    .job-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    .job h3 { margin: 0; font-size: 1.2rem; }
+    .job .org { color: var(--primary); font-weight: 600; }
+    .job .date { color: var(--muted); font-size: .9rem; }
+    .job ul { margin: 14px 0 0; padding-left: 20px; }
+    .job li { margin-bottom: 6px; }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .project { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .2s; }
+    .project:hover { transform: translateY(-4px); }
+    .project img { width: 100%; height: 210px; object-fit: cover; object-position: top; border-bottom: 1px solid var(--border); cursor: zoom-in; }
+    .project .body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .project .meta { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .project h3 { margin: 6px 0 12px; font-size: 1.15rem; }
+    .psr { margin: 0 0 14px; padding: 0; list-style: none; font-size: .95rem; }
+    .psr li { margin-bottom: 6px; }
+    .psr b { color: var(--primary); }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .tag { background: #e7f0ff; color: var(--primary-dark); font-size: .8rem; padding: 4px 10px; border-radius: 999px; font-weight: 500; }
+
+    /* Lightbox */
+    #lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; align-items: center; justify-content: center; z-index: 200; padding: 30px; cursor: zoom-out; }
+    #lightbox img { max-height: 90vh; border-radius: 8px; }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .skill-group h3 { margin: 0 0 12px; font-size: 1.05rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { background: #fff; border: 1px solid var(--border); padding: 6px 12px; border-radius: 8px; font-size: .9rem; }
+    .chip.core { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .legend { color: var(--muted); font-size: .85rem; margin-top: 18px; }
+
+    /* Education */
+    .edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .edu .card h3 { font-size: 1.05rem; }
+    .edu .card .when { color: var(--primary); font-weight: 600; font-size: .9rem; }
+
+    /* Outside work */
+    .outside { display: flex; gap: 20px; flex-wrap: wrap; }
+    .outside .card { flex: 1; min-width: 240px; }
+
+    /* Contact */
+    .contact { text-align: center; }
+    .contact .btns { justify-content: center; }
+    footer { text-align: center; padding: 24px; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero p.lead { margin: 0 auto; }
+      .btns { justify-content: center; }
+      .photo-card { order: -1; }
+      .photo-card img { width: 220px; height: 220px; }
+      .badge { display: none; }
+      .hero h1 { font-size: 2.1rem; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .cards, .projects, .skills, .edu { grid-template-columns: 1fr; }
+      .nav ul { display: none; }
     }
-
-    footer {
-      text-align: center; padding: 20px; background-color: #f8f9fa; color: #6c757d; font-size: 0.9rem;
-    }
-
-    #chartBackground {
-      position: fixed; top: 60px; left: 0; width: 100vw; height: calc(100vh - 60px);
-      pointer-events: none; z-index: 0; background: #ffffff; overflow: visible;
-    }
-
-    .chart-shape { position: absolute; fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; animation: floatChart 10s ease-in-out infinite; }
-
-    @keyframes floatChart {
-      0% { transform: translateY(0) scale(1); opacity: 0.3; }
-      50% { transform: translateY(-15px) scale(1.05); opacity: 0.6; }
-      100% { transform: translateY(0) scale(1); opacity: 0.3; }
-    }
-
-    @keyframes flipOnce { 0% { transform: scaleX(1); } 50% { transform: scaleX(-1); } 100% { transform: scaleX(1); } }
-
-    .container { display: flex; padding-top: 80px; position: relative; z-index: 10; gap: 20px; max-width: 1200px; margin: 0 auto; }
-    .left, .right { width: 25%; } .middle { width: 50%; }
-
-    aside, main {
-      background-color: #f1f3f5; border-radius: 12px; padding: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      animation: fadeInUp 1s ease forwards; opacity: 0; transform: translateY(20px);
-      display: flex; flex-direction: column; gap: 20px;
-    }
-
-    aside.left { animation-delay: 0.2s; }
-    main.middle { animation-delay: 0.4s; }
-    aside.right { animation-delay: 0.6s; }
-
-    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
-    h1 { font-size: 1.5rem; margin: 0; color: #000; text-align: center; }
-    h2 { font-size: 1.3rem; color: #0d6efd; margin: 0 0 10px; border-left: 4px solid #0d6efd; padding-left: 10px; }
-    h3 { margin: 5px 0; color: #0d6efd; }
-    p { font-size: 1rem; line-height: 1.6; color: #333; }
-
-    .profile-pic {
-      width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
-      margin: 0 auto; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      animation: flipOnce 1.5s ease-in-out 0.2s 1;
-    }
-
-    .skills-list span { display: inline-block; background-color: #dee2e6; color: #0d6efd; padding: 5px 10px; margin: 5px; border-radius: 6px; font-size: 0.95rem; }
-
-    .hobbies-list { padding-left: 0; } .hobbies-list li { list-style: none; margin-bottom: 8px; }
-
-    a { color: #0d6efd; text-decoration: none; } a:hover { text-decoration: underline; }
-
-    @media screen and (max-width: 900px) {
-      .container { flex-direction: column; padding: 80px 20px 20px; }
-      .left, .middle, .right { width: 100%; }
-      header { justify-content: center; }
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: rotate(0deg); }
-      20%, 60% { transform: rotate(-15deg); }
-      40%, 80% { transform: rotate(15deg); }
-    }
-
-    #hand-emoji { animation: shake 1.5s infinite; transform-origin: 70% 70%; }
-
-    /* Slideshow styling */
-    #slideshow { width: 100%; max-width: 600px; height: 400px; margin: 20px auto; overflow: hidden; border-radius: 12px; border: 2px solid #ccc; }
-    #slideshow img { width: 100%; height: 100%; display: none; border-radius: 8px; }
-    
-    /* Skill bars */
-    .skill { margin-bottom: 12px; }
-    .skill span { display: inline-block; width: 180px; font-weight: 500; }
-    .bar { display: inline-block; width: 60%; background: #eee; border-radius: 10px; overflow: hidden; vertical-align: middle; height: 20px; margin-left: 10px; }
-    .bar .fill { background: #0d6efd; height: 100%; color: #fff; font-size: 0.8rem; text-align: right; padding-right: 5px; line-height: 20px; border-radius: 10px; }
   </style>
 </head>
 
 <body>
-<header>
-  <span id="hand-emoji" style="display: inline-block; cursor: default;">👋</span>
-  <span style="margin-left: 10px;">Welcome to my portfolio!</span>
-</header>
-
 <div id="chartBackground"></div>
 
-<div class="container">
-  <!-- LEFT PANEL -->
-  <aside class="left">
-    <img src="image/photo.jpg" alt="Ritika's Photo" class="profile-pic" />
-    <div style="margin-top: 15px;">
-      <h1>Ritika Khurana</h1>
-      <p class="designation" style="color:#0d6efd; text-align: center;">
-        | IIBA - CBDA® | <br>
-        Certified Business Data Analyst<br> 
-        PG in Data Analytics for Business
-      </p>
-    </div>
-    <p id="typing-intro" class="intro" style="text-align: center; margin-top: 15px;"></p>
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand">Ritika <span>Khurana</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-
-
-
-
-  </aside>
-
-  <!-- MIDDLE CONTENT -->
-  <main class="middle">
-    <div class="section" style="margin-top: 30px;">
-      <h2>Who I Am at Work 🦎</h2>
-      <p style="color:#555; line-height:1.5;">
-        I’m a <strong>data chameleon</strong>—sometimes digging into numbers as a Data Analyst, 
-        other days I’m a Business Analyst connecting the dots between the business and the technical requirements.
-        I explore BI dashboards, design data models, and build quick ad-hoc solutions whenever the team needs a helping hand.
-      </p>
-    </div>
-
-    <div class="section">
-      
-         <div class="section" style="margin-top: 30px;">
-	<h2>Projects Highlights</h2>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">IIBA CBDA® · Open to BI &amp; Data Analyst opportunities</span>
+        <h1>Hi, I'm Ritika.<br>I turn <span class="hl">complex data</span> into decisions.</h1>
+        <p class="role"><b id="typed"></b><span class="cursor">&nbsp;</span></p>
+        <p class="lead">
+          Business Data Intelligence Analyst with <strong>5+ years</strong> of experience in SQL and Snowflake. I extract,
+          validate, and reconcile large datasets across systems. I turn business questions into Power BI dashboards,
+          Hex apps, and forecasts that leaders actually use.
+        </p>
+        <div class="btns">
+          <a class="btn solid" href="#projects">View my work</a>
+          <a class="btn ghost" href="RitikaKhurana-Resume.pdf" target="_blank" rel="noopener">Download résumé</a>
+        </div>
+      </div>
+      <div class="photo-card">
+        <img src="image/photo.jpg" alt="Ritika Khurana" />
+        <div class="badge b1">❄️ Snowflake + SQL<small>daily driver</small></div>
+        <div class="badge b2">📊 Power BI · Hex · dbt<small>reporting &amp; modelling</small></div>
       </div>
     </div>
 
-    <!-- Slideshow Section -->
-    <div id="slideshow">
-      <img src="image/Project 2a.jpg" alt="Work1 Screenshot" />
-      <img src="image/work1.PNG" alt="Work2 Screenshot" />
-      <img src="image/Work5.png" alt="Work3 Screenshot" />
-     <img src="image/Work3.jpg" alt="Work3 Screenshot" />
-     <img src="image/Work 4.png" alt="Work3 Screenshot" />
+    <div class="stats reveal">
+      <div class="stat"><div class="num" data-count="5">0</div><div class="lbl">+ years in analytics</div></div>
+      <div class="stat"><div class="num" data-count="4" data-suffix="%">0</div><div class="lbl">sales lift from pricing insight</div></div>
+      <div class="stat"><div class="num" data-count="6">0</div><div class="lbl">+ major programs delivered</div></div>
+      <div class="stat"><div class="num" data-count="4" data-suffix=".0">0</div><div class="lbl">GPA · Faculty Academic Award</div></div>
     </div>
-
-
-
-
-	<div class="section">
-  <h2>Skills & Proficiency</h2>
-
-  <h3>Data Visualization</h3>
-  <div class="skill">
-    <span>Power BI</span>
-    <div class="bar"><div class="fill" style="width:90%;">90%</div></div>
   </div>
-  <div class="skill">
-    <span>Tableau</span>
-    <div class="bar"><div class="fill" style="width:85%;">85%</div></div>
-  </div>
+</section>
 
-  <div class="skill">
-    <span>MS Excel</span>
-    <div class="bar"><div class="fill" style="width:90%;">90%</div></div>
-  </div>
-
-  <h3>Data Manipulation</h3>
-	<div class="skill">
-    		<span>Snowflake</span>
-    		<div class="bar"><div class="fill" style="width:90%;">90%</div></div>
-  	</div>
-	<div class="skill">
-    		<span>SQL</span>
-    		<div class="bar"><div class="fill" style="width:95%;">95%</div></div>
-  	</div>
-  	<div class="skill">
-    		<span>Power Query</span>
-    		<div class="bar"><div class="fill" style="width:85%;">85%</div></div>
-  	</div>
-  <div class="skill">
-    <span>Python</span>
-    <div class="bar"><div class="fill" style="width:70%;">70%</div></div>
-  </div>
-
-  <div class="skill">
-    <span>ETL</span>
-    <div class="bar"><div class="fill" style="width:75%;">75%</div></div>
-  </div>
-  <div class="skill">
-    <span>DAX</span>
-    <div class="bar"><div class="fill" style="width:85%;">85%</div></div>
-  </div>
-
-  <h3>Documentation & Storyboarding</h3>
-  <div class="skill">
-    <span>Confluence</span>
-    <div class="bar"><div class="fill" style="width:90%;">90%</div></div>
-  </div>
-  <div class="skill">
-    <span>Lucid</span>
-    <div class="bar"><div class="fill" style="width:90%;">90%</div></div>
-  </div>
-	<div class="skill">
-    <span>Miro Board</span>
-    <div class="bar"><div class="fill" style="width:90%;">90%</div></div>
-  </div>
-
-
-  
-</div>  
-
-    <div class="section">
-   
-     
+<!-- WHAT I DO -->
+<section class="alt" id="about">
+  <div class="wrap">
+    <h2 class="title reveal">What I do</h2>
+    <p class="subtitle reveal">I work between the business and the data. I understand the question, build the solution, and tell the story behind the results.</p>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="icon">🔎</div>
+        <h3>Data Extraction &amp; Quality</h3>
+        <p>Pull, clean, validate, and reconcile large, complex datasets in Snowflake and SQL, checked against business rules so the numbers hold up.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">📊</div>
+        <h3>BI &amp; Data Storytelling</h3>
+        <p>Interactive Power BI dashboards (DAX), Hex apps, and presentations that make insights clear for both executives and technical teams.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">📈</div>
+        <h3>Forecasting &amp; Budgeting</h3>
+        <p>Forecasting and budget analysis, including an ML-powered planning app, that turns program data into cost-efficiency recommendations.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🧩</div>
+        <h3>Requirements &amp; Process Mapping</h3>
+        <p>Run stakeholder sessions, map processes in Lucidchart and Miro, document business rules in Confluence, and translate them into technical specs.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">⚙️</div>
+        <h3>Modern Data Stack</h3>
+        <p>Build data models and workflows in dbt, Hex, Streamlit, and Snowflake Cortex Code to make reporting faster, more consistent, and easier to maintain.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🤝</div>
+        <h3>Agile Delivery &amp; Mentoring</h3>
+        <p>Scrum Master for the analytics team: I run sprint planning, stand-ups, and retros, balance competing priorities, and mentor junior analysts.</p>
+      </div>
     </div>
-  </main>
+  </div>
+</section>
 
-  <!-- RIGHT PANEL -->
-  <aside class="right">
-    <div class="section">
-      <h2>Outside Work</h2>
-      <ul class="hobbies-list">
-        <li>🎨 Cricut Crafter – Enjoy designing and creating personalized crafts, home décor</li>
-        <li>🍳 I enjoy traveling, exploring different cuisines from around the world, and recreating them in my own style</li>
-      </ul>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <h2 class="title reveal">Experience</h2>
+    <p class="subtitle reveal">Where I've applied it</p>
+    <div class="timeline">
+      <div class="job reveal">
+        <div class="job-head">
+          <div>
+            <h3>Business Data Analyst, Intelligence &amp; Analytics</h3>
+            <div class="org">CAA – Alberta Motor Association · Edmonton, AB</div>
+          </div>
+          <div class="date">May 2022 – Present</div>
+        </div>
+        <ul>
+          <li>Extract, validate, and reconcile large cross-system datasets in <strong>Snowflake &amp; SQL</strong>, and share findings through Power BI, Hex, and data-storytelling presentations.</li>
+          <li>Build data models and analytics workflows in <strong>dbt, Hex, and Snowflake Cortex Code</strong> to modernize reporting and make it faster and easier to maintain.</li>
+          <li>Prepare <strong>forecasting and budgeting</strong> analysis that turns program data into recommendations and cost-efficiency insights.</li>
+          <li>Lead analytics for <strong>Vehicle Auto Renew Enrolment</strong> and <strong>Member Engagement</strong>; managed <strong>Hello Alberta</strong> and <strong>Community Membership</strong> through delivery.</li>
+          <li>Run data discovery to define the KPIs and methods the business uses to track strategic growth and performance targets.</li>
+          <li>Serve as <strong>Scrum Master</strong> for the analytics team, and gather requirements and map processes with cross-functional stakeholders.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-head">
+          <div>
+            <h3>Business Intelligence Analyst</h3>
+            <div class="org">Reliance Industries Ltd. · India</div>
+          </div>
+          <div class="date">Jul 2018 – Mar 2020</div>
+        </div>
+        <ul>
+          <li>Built a sales-trend reporting platform for gas stations; my pricing recommendations produced a <strong>4% sales lift during idle hours</strong>.</li>
+          <li>Gathered requirements and designed dashboards with user manuals, working in an Agile/Jira environment.</li>
+          <li>Built ETL scripts to ingest data from multiple platforms into a data lake, and wrote SQL to clean, validate, and analyze large datasets.</li>
+          <li>Received the <strong>“Skill Adder”</strong> award, was chosen to roll out design thinking in the department, and <strong>mentored 4 new hires</strong>.</li>
+        </ul>
+      </div>
     </div>
-    <section class="section education">
-      <h2>Education</h2>
-      <p><strong>Postgraduate Certificate in Business Data Analytics</strong> — Zekelman School of Business - St Clair College <br /><small>2022</small></p>
-      <p><strong>Bachelor of Engineering - ECE</strong> — National Institute of Engineering (NIT-Jalandhar) <br /><small>2018</small></p>
-    </section>
-    <div class="section">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:kh.ritika30@gmail.com">kh.ritika30@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/ritika-khurana-b62a34166/" target="_blank">View Profile</a></p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="alt" id="projects">
+  <div class="wrap">
+    <h2 class="title reveal">Featured Projects</h2>
+    <p class="subtitle reveal">Real business problems and how I solved them. Click a screenshot to enlarge it.</p>
+    <div class="projects">
+
+      <article class="project reveal">
+        <img src="image/Project 2a.jpg" alt="Agent productivity Hex app" />
+        <div class="body">
+          <div class="meta">AMA Registries · 2026</div>
+          <h3>Driver's Licence &amp; Health Card Merge: Agent Productivity Analysis</h3>
+          <ul class="psr">
+            <li><b>Problem:</b> Alberta merged the driver's licence and health card. Leadership needed to know how the change affected agent handling time and productivity.</li>
+            <li><b>Approach:</b> Reconciled transaction-level data in Snowflake and defined pre-change baselines and metrics.</li>
+            <li><b>Outcome:</b> Built a Hex app showing trends by agent, location, and transaction type, and presented recommendations on staffing, training, and process to Registries leadership.</li>
+          </ul>
+          <div class="tags"><span class="tag">Snowflake</span><span class="tag">SQL</span><span class="tag">Hex</span><span class="tag">KPI Design</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <img src="image/work1.PNG" alt="Budgeting and strategic planning app" />
+        <div class="body">
+          <div class="meta">AMA Registries · 2026</div>
+          <h3>Registries Budgeting &amp; Strategic Planning Platform</h3>
+          <ul class="psr">
+            <li><b>Problem:</b> Budgeting and forecasting were manual and spread across spreadsheets.</li>
+            <li><b>Approach:</b> Built a Python and Streamlit app on Snowflake with an automated ML forecasting model, and acted as the business unit's primary point of contact.</li>
+            <li><b>Outcome:</b> Gave Registries one place for planning, plus an automated request-intake pipeline (Cortex Code + Azure DevOps) that reduced manual effort.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">ML Forecasting</span><span class="tag">dbt</span><span class="tag">Azure DevOps</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <img src="image/Work5.png" alt="Gift card program reporting" />
+        <div class="body">
+          <div class="meta">AMA · 2025</div>
+          <h3>National Gift Card Program</h3>
+          <ul class="psr">
+            <li><b>Problem:</b> A new national program had no defined data flow or way to measure performance.</li>
+            <li><b>Approach:</b> Gathered requirements and worked with the architecture team to design the data flow, integration points, measures, and dimensions.</li>
+            <li><b>Outcome:</b> Delivered the reporting framework and performance metrics used to track the program.</li>
+          </ul>
+          <div class="tags"><span class="tag">Data Modeling</span><span class="tag">Snowflake</span><span class="tag">Requirements</span><span class="tag">Reporting</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <img src="image/Work3.jpg" alt="Hello Alberta dashboard" />
+        <div class="body">
+          <div class="meta">AMA · 2024</div>
+          <h3>Hello Alberta Implementation</h3>
+          <ul class="psr">
+            <li><b>Problem:</b> The program needed reliable tracking from launch.</li>
+            <li><b>Approach:</b> Set up data-capture touchpoints across the journey, then built the data model and DAX measures.</li>
+            <li><b>Outcome:</b> Delivered a Power BI dashboard that tracked performance through delivery.</li>
+          </ul>
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Modeling</span><span class="tag">Statistics</span></div>
+        </div>
+      </article>
+
     </div>
-  </aside>
-</div>
+  </div>
+</section>
 
-<footer>© 2025 Ritika Khurana. All rights reserved.</footer>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <h2 class="title reveal">Skills &amp; Tools</h2>
+    <p class="subtitle reveal">My toolkit, from raw data to final presentation.</p>
+    <div class="skills">
+      <div class="skill-group card reveal">
+        <h3>🗄️ Data &amp; Engineering</h3>
+        <div class="chips">
+          <span class="chip core">SQL</span><span class="chip core">Snowflake</span><span class="chip core">dbt</span>
+          <span class="chip">Python</span><span class="chip">ETL</span><span class="chip">Power Query</span>
+          <span class="chip">Oracle</span><span class="chip">DB2</span><span class="chip">R</span><span class="chip">C#</span>
+        </div>
+      </div>
+      <div class="skill-group card reveal">
+        <h3>📊 BI &amp; Visualization</h3>
+        <div class="chips">
+          <span class="chip core">Power BI</span><span class="chip core">DAX</span><span class="chip core">Hex</span>
+          <span class="chip">Tableau</span><span class="chip">Streamlit</span><span class="chip">Excel / VBA</span>
+          <span class="chip">Google Analytics</span>
+        </div>
+      </div>
+      <div class="skill-group card reveal">
+        <h3>🧭 Business Analysis &amp; Delivery</h3>
+        <div class="chips">
+          <span class="chip core">Requirements</span><span class="chip core">Scrum / Agile</span>
+          <span class="chip">Confluence</span><span class="chip">Lucidchart</span><span class="chip">Miro</span>
+          <span class="chip">Jira</span><span class="chip">Azure DevOps</span><span class="chip">Figma</span>
+          <span class="chip">SWOT / PESTLE</span>
+        </div>
+      </div>
+    </div>
+    <p class="legend reveal">Highlighted = tools I use every day.</p>
+  </div>
+</section>
 
-<!-- Scripts -->
+<!-- EDUCATION -->
+<section class="alt" id="education">
+  <div class="wrap">
+    <h2 class="title reveal">Certifications &amp; Education</h2>
+    <p class="subtitle reveal">&nbsp;</p>
+    <div class="edu">
+      <div class="card reveal">
+        <div class="icon">🏅</div>
+        <h3>Certified Business Data Analyst (CBDA®)</h3>
+        <p>IIBA – International Institute of Business Analysis</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🎓</div>
+        <h3>Post-Graduate, Data Analytics for Business</h3>
+        <p>St. Clair College (Zekelman School of Business), Windsor, ON</p>
+        <p class="when">2020 – 2022 · 4.0 GPA · High Distinction &amp; Faculty Academic Award</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🎓</div>
+        <h3>B.Tech, Electronics &amp; Communication</h3>
+        <p>National Institute of Technology (NIT) Jalandhar, India</p>
+        <p class="when">2014 – 2018</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTSIDE WORK -->
+<section id="outside">
+  <div class="wrap">
+    <h2 class="title reveal">Outside Work</h2>
+    <p class="subtitle reveal">&nbsp;</p>
+    <div class="outside">
+      <div class="card reveal"><div class="icon">🎨</div><h3>Cricut Crafting</h3><p>Designing personalized crafts and home décor.</p></div>
+      <div class="card reveal"><div class="icon">🍳</div><h3>Food &amp; Travel</h3><p>Exploring world cuisines and recreating them in my own style.</p></div>
+      <div class="card reveal"><div class="icon">🤲</div><h3>Giving Back</h3><p>Women in STEM Club; taught 50+ under-privileged children with Prayaas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="alt contact" id="contact">
+  <div class="wrap">
+    <h2 class="title reveal">Let's work together</h2>
+    <p class="subtitle reveal">Hiring for a BI, data, or business analyst role? I'd love to hear from you.</p>
+    <div class="btns reveal">
+      <a class="btn solid" href="mailto:kh.ritika30@gmail.com">✉️ kh.ritika30@gmail.com</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/ritika-khurana-b62a34166/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="RitikaKhurana-Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+    </div>
+    <p class="reveal" style="color:var(--muted);margin-top:18px;">📍 Edmonton / Beaumont, Alberta, Canada</p>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Ritika Khurana · Built with HTML, CSS &amp; a love for clean data.</footer>
+
+<div id="lightbox"><img alt="Enlarged screenshot" /></div>
+
 <script>
-  // Slideshow logic
-  const images = document.querySelectorAll('#slideshow img');
-  let current = 0;
-  images[current].style.display = 'block';
-  setInterval(() => {
-    images[current].style.display = 'none';
-    current = (current + 1) % images.length;
-    images[current].style.display = 'block';
-  }, 5000);
+  // Typing roles
+  const roles = ["Business Data Intelligence Analyst", "Power BI & Hex Developer", "Snowflake + SQL Specialist", "Business Analyst & Scrum Master"];
+  const typed = document.getElementById("typed");
+  let r = 0, c = 0, deleting = false;
+  (function loop() {
+    const word = roles[r];
+    typed.textContent = word.slice(0, c);
+    if (!deleting && c < word.length) c++;
+    else if (deleting && c > 0) c--;
+    else if (!deleting) { deleting = true; return setTimeout(loop, 1600); }
+    else { deleting = false; r = (r + 1) % roles.length; }
+    setTimeout(loop, deleting ? 35 : 70);
+  })();
 
-  // Typing intro
-  const introText = `I'm a data analyst who thrives on uncovering stories hidden in numbers. With a mix of curiosity, SQL, and dashboards, I turn raw data into actionable insights that drive business strategy.`;
-  let index = 0;
-  function typeWriter() {
-    if(index < introText.length){
-      document.getElementById("typing-intro").innerHTML += introText.charAt(index);
-      index++;
-      setTimeout(typeWriter, 50);
+  // Scroll reveal + stat counters
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("show");
+      e.target.querySelectorAll("[data-count]").forEach(el => {
+        const target = +el.dataset.count, suffix = el.dataset.suffix || "";
+        let n = 0;
+        const t = setInterval(() => { n++; el.textContent = n + suffix; if (n >= target) clearInterval(t); }, 120);
+      });
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // Lightbox for project screenshots
+  const lb = document.getElementById("lightbox");
+  document.querySelectorAll(".project img").forEach(img => {
+    img.addEventListener("click", () => { lb.querySelector("img").src = img.src; lb.style.display = "flex"; });
+  });
+  lb.addEventListener("click", () => lb.style.display = "none");
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Floating chart background (from original design)
+  const bg = document.getElementById("chartBackground"), svgNS = "http://www.w3.org/2000/svg";
+  function draw() {
+    bg.innerHTML = "";
+    for (let i = 0; i < 6; i++) {
+      const svg = document.createElementNS(svgNS, "svg");
+      svg.classList.add("chart-shape");
+      svg.setAttribute("viewBox", "0 0 100 50");
+      Object.assign(svg.style, { top: Math.random() * 90 + "%", left: Math.random() * 90 + "%", width: "150px", height: "80px", animationDelay: Math.random() * 5 + "s" });
+      const pl = document.createElementNS(svgNS, "polyline");
+      pl.setAttribute("points", Array.from({ length: 6 }, (_, i) => `${i * 20},${10 + Math.random() * 30}`).join(" "));
+      pl.setAttribute("stroke", "rgba(13,110,253,0.18)");
+      pl.setAttribute("stroke-width", "2");
+      pl.setAttribute("fill", "none");
+      svg.appendChild(pl);
+      bg.appendChild(svg);
     }
   }
-  window.onload = typeWriter;
-
-  // Floating chart background
-  const chartBackground = document.getElementById("chartBackground");
-  const svgNS = "http://www.w3.org/2000/svg";
-  const pastelColors = ["rgba(0, 123, 255, 0.15)","rgba(108, 117, 125, 0.15)","rgba(13, 110, 253, 0.1)","rgba(0,0,0,0.05)"];
-  function createLineChart() {
-    const svg = document.createElementNS(svgNS, "svg");
-    svg.classList.add("chart-shape");
-    svg.setAttribute("viewBox", "0 0 100 50");
-    svg.style.top = `${Math.random() * 90}%`;
-    svg.style.left = `${Math.random() * 90}%`;
-    svg.style.width = "150px";
-    svg.style.height = "80px";
-    svg.style.animationDelay = `${Math.random() * 5}s`;
-    const points = Array.from({ length: 6 }, (_, i) => `${i*20},${10+Math.random()*30}`).join(" ");
-    const polyline = document.createElementNS(svgNS, "polyline");
-    polyline.setAttribute("points", points);
-    polyline.setAttribute("stroke", pastelColors[0]);
-    polyline.setAttribute("fill", "none");
-    svg.appendChild(polyline);
-    chartBackground.appendChild(svg);
-  }
-  function generateCharts() { chartBackground.innerHTML = ""; for(let i=0;i<6;i++){ createLineChart(); } }
-  generateCharts();
-  setInterval(generateCharts, 10000);
+  draw(); setInterval(draw, 10000);
 </script>
 </body>
 </html>
